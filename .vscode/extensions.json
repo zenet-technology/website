@@ -1,0 +1,12 @@
+{
+  "recommendations": [
+    "tauri-apps.tauri-vscode",
+    "bradlc.vscode-tailwindcss",
+    "steoates.autoimport",
+    "visualstudioexptteam.vscodeintellicode",
+    "yzhang.markdown-all-in-one",
+    "christian-kohler.npm-intellisense",
+    "christian-kohler.path-intellisense",
+    "redhat.vscode-yaml"
+  ]
+}
