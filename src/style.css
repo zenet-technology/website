@@ -1,8 +1,6 @@
 @import "tailwindcss/preflight" layer(base);
 @import "tailwindcss/utilities" layer(utilities);
 
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
-
 @theme {
   /* Defaults */
   --default-transition-duration: 150ms;
@@ -302,7 +300,7 @@
   }
 
   a {
-    @apply text-primary hover:text-black hover:dark:text-white;
+    @apply text-primary hover:text-secondary;
   }
 
   form {
