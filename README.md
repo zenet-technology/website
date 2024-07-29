@@ -9,5 +9,6 @@
 <br />
 <br />
 <p align="center">
-  Zenet Technology - Your consultancy firm - Made with [Brisa](https://brisa.build/)
+  Zenet Technology - Your consultancy firm - Made with
+  <a target="_blank" rel="noopener noreferrer" href="https://brisa.build/">Brisa</a>
 </p>
