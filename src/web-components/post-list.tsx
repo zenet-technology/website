@@ -74,7 +74,7 @@ export default function PostList(
                     </h3>
                     {PostInfo({ timeToRead, date, hideAuthor: true })}
                     <p class="font-light text-gray-500 dark:text-gray-400">
-                      {metadata.excerpt}...
+                      {metadata.description}
                     </p>
                     <div class="self-end inline-flex items-center">
                       {i18n.t('BLOG_READ_ARTICLE')}
@@ -164,7 +164,7 @@ function PostInfo({
   );
 
   return (
-    <time datetime={date} class="text-gray-300 dark:text-gray-700">
+    <time datetime={date} class="text-sm text-gray-300 dark:text-gray-700">
       {authorElement}
       {`${date} • ${timeToRead.text.replace(/ /g, '\u00A0')}`}
     </time>

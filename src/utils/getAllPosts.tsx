@@ -13,6 +13,7 @@ export type Metadata = {
   cover_image?: string;
   cover_image_mobile?: string;
   series?: string;
+  author?: string;
 };
 
 export type Post = {
