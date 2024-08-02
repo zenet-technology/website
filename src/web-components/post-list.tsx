@@ -34,8 +34,8 @@ export default function PostList(
         <p>{i18n.t('BLOG_POSTS', { posts: filteredPosts.value?.length })}</p>
       </hgroup>
 
-      <div class="flex flex-col md:flex-row gap-4">
-        <div>
+      <div class="flex flex-col md:flex-row gap-4 flex-col-reverse">
+        <div class="flex-auto">
           {postsToShow.value?.map?.(
             ({ slug, metadata, date, timeToRead }: Post) => (
               <a
@@ -56,14 +56,13 @@ export default function PostList(
                       />
                     ) : null}
                     <div class="mt-2 flex flex-wrap gap-2">
-                      {metadata.tags?.split(',').map((tag) => (
-                        <div
-                          class="bg-secondary-300 text-tertiary-700 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-tertiary-700 dark:text-secondary-300"
-                          key={tag.trim()}
-                        >
-                          {tag.trim()}
-                        </div>
-                      ))}
+                      {metadata.tags?.split(',').map((tag) =>
+                        Tag({
+                          key: tag,
+                          label: tag,
+                          q: params.value?.q ?? '',
+                        }),
+                      )}
                     </div>
                   </div>
                   <div class="flex flex-col sm:w-2/3">
@@ -73,10 +72,10 @@ export default function PostList(
                     >
                       {metadata.title}
                     </h3>
-                    <p class="font-light text-gray-500 dark:text-gray-400">
-                      {metadata.excerpt?.split(' ', 35).join(' ')}...
-                    </p>
                     {PostInfo({ timeToRead, date, hideAuthor: true })}
+                    <p class="font-light text-gray-500 dark:text-gray-400">
+                      {metadata.excerpt}...
+                    </p>
                     <div class="self-end inline-flex items-center">
                       {i18n.t('BLOG_READ_ARTICLE')}
                     </div>
@@ -123,7 +122,7 @@ export default function PostList(
             </div>
           )}
         </div>
-        <aside class="md:sticky w-full md:w-[40%]">
+        <aside class="md:sticky w-full md:max-w-[320px]">
           <input
             class="w-full mb-4"
             value={params.value?.q ?? ''}
@@ -165,7 +164,7 @@ function PostInfo({
   );
 
   return (
-    <time datetime={date} class="post-info">
+    <time datetime={date} class="text-gray-300 dark:text-gray-700">
       {authorElement}
       {`${date} • ${timeToRead.text.replace(/ /g, '\u00A0')}`}
     </time>
@@ -203,12 +202,19 @@ function Tag({
     history.replaceState(null, '', href);
   }
 
+  // <div
+  //   class="bg-secondary-300 text-tertiary-700 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-tertiary-700 dark:text-secondary-300"
+  //   key={tag.trim()}
+  // >
+  //   {tag.trim()}
+  // </div>
+
   return (
     <a
       key={key}
       onClick={onTag}
       href={href}
-      class={`py-2 px-4 border rounded text-sm ${isActive ? 'text-secondary border-secondary' : 'border-primary'}`}
+      class={`bg-secondary-300 text-tertiary-700 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-tertiary-700 dark:text-secondary-300 border hover:text-primary ${isActive ? 'text-tertiary border-tertiary-700 border-secondary-300' : 'border-secondary-300 dark:border-tertiary-700'}`}
     >
       {label}
     </a>
