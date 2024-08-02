@@ -19,9 +19,5 @@ export default function Blog(_: undefined, { store }: RequestContext) {
   store.set('posts', posts);
   store.transferToClient(['tags', 'posts']);
 
-  return (
-    <post-list tags={tags}>
-      <h1 slot="title">Blog</h1>
-    </post-list>
-  );
+  return <post-list tags={tags} />;
 }

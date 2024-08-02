@@ -4,7 +4,7 @@ description: Learn how to keep your web components' state intact while navigatin
 tags: javascript, experimental, brisa
 series: 'HTML streaming'
 cover_image: /images/cover-images/31_cover_image.webp
-cover_image_mobile: /images/cover-images/31_cover_image_mobile.webp
+cover_image_mobile: /images/spa.webp
 cover_color: '#212329'
 dev_to: spa-like-navigation-preserving-web-component-state-lh3
 ---

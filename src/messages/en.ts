@@ -1,30 +1,4 @@
 export default {
-  CONTACT_FORM: {
-    EMAIL_REQUIRED:
-      'We need a valid email in order for us to reply your query.',
-    EMAIL: 'Email',
-    MESSAGE_PLACEHOLDER:
-      'Hello Zenet! I am Jhon Doe and I work for the company xyz. I would like...',
-    DIALOG_ERROR_TITLE: 'Something is missing',
-    DIALOG_BUTTON: 'Ok',
-    NAME_REQUIRED:
-      'We need to know your name for us to know with whom we are talking.',
-    NAME: 'Name',
-    PRIVACY_REQUIRED:
-      'You must confirm that you have read and accepted the privacy policy.',
-    SEND_MESSAGE: 'Submit Enquiry',
-    TITLE: "Let's work together",
-    PRIVACY: 'I have read and agree to the Zenet Privacy Policy (required)',
-    DIALOG_MESSAGE_SENT: 'Our team will reply to you ASAP.',
-    NEWSLETTER: 'I want to subscribe to Zenet Technology newsletter',
-    MESSAGE: 'How can we help you?',
-    MESSAGE_REQUIRED:
-      'Tell us more about how we can help you. We found that there is no message.',
-    DIALOG_TITLE_SENT: 'Message sent!',
-    SERVICE_UNAVAILABLE:
-      'Service currently unavailable, try contact directly to enquiry@zenettech.com',
-    SENDING_MESSAGE: 'Submitting...',
-  },
   NOT_FOUND: {
     DESCRIPTION: 'Sorry, we could not find the page you have requested.',
     TITLE: 'Page not found',
@@ -76,4 +50,8 @@ export default {
   READ_MORE: 'Read the article',
   BLOG_SUBTITLE:
     'Exploring the latest trends and strategies in technology and tech management.',
+  BLOG_POSTS: '{{posts}} posts',
+  BLOG_POST_SEARCH: 'Search posts',
+  BLOG_CANT_FIND: "Can't find what you're looking for? Try using",
+  BLOG_READ_ARTICLE: 'Read the article →',
 } as const;

@@ -7,7 +7,7 @@ const itemsPerPage = 10;
 
 export default function PostList(
   { tags }: { tags: string[] },
-  { store, params, derived }: WebContext,
+  { i18n, store, params, derived }: WebContext,
 ) {
   const filteredPosts = derived(() =>
     params.value?.q
@@ -25,39 +25,63 @@ export default function PostList(
   });
 
   return (
-    <>
-      <div class="blog-page-content">
-        <div class="posts-box">
-          <div class="blog-title">
-            <slot name="title" />
-            <div>{filteredPosts.value?.length} posts</div>
-          </div>
+    <section class="container mx-auto max-w-5xl px-4 lg:px-6 py-8 lg:py-16">
+      <hgroup class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
+        <h1 class="text-4xl font-bold">{i18n.t('BLOG')}</h1>
+        <p class="font-light text-gray-500 text-base sm:text-lg dark:text-gray-400">
+          {i18n.t('BLOG_SUBTITLE')}
+        </p>
+        <p>{i18n.t('BLOG_POSTS', { posts: filteredPosts.value?.length })}</p>
+      </hgroup>
 
+      <div class="flex flex-col md:flex-row gap-4">
+        <div>
           {postsToShow.value?.map?.(
             ({ slug, metadata, date, timeToRead }: Post) => (
               <a
                 href={`/blog/${slug}`}
                 key={slug}
-                class="post-list-item"
                 title={metadata.description}
                 aria-label={metadata.description}
               >
-                <div class="image-wrapper">
-                  <img
-                    loading="lazy"
-                    height={50}
-                    width={110}
-                    src={metadata.cover_image_mobile}
-                    alt={metadata.title}
-                    style={{ viewTransitionName: `img:${slug}` }}
-                  />
-                </div>
-                <div class="info">
-                  <h2 style={{ viewTransitionName: `title:${slug}` }}>
-                    {metadata.title}
-                  </h2>
-                  {PostInfo({ timeToRead, date, hideAuthor: true })}
-                </div>
+                <article class="sm:flex justify-between mb-8 p-4 rounded border-gray-300 shadow dark:bg-gray-700 dark:border-gray-700">
+                  <div class="sm:mr-4 sm:w-1/3">
+                    {metadata.cover_image_mobile ? (
+                      <img
+                        loading="lazy"
+                        src={metadata.cover_image_mobile}
+                        alt={metadata.title}
+                        style={{ viewTransitionName: `img:${slug}` }}
+                        class="rounded"
+                      />
+                    ) : null}
+                    <div class="mt-2 flex flex-wrap gap-2">
+                      {metadata.tags?.split(',').map((tag) => (
+                        <div
+                          class="bg-secondary-300 text-tertiary-700 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-tertiary-700 dark:text-secondary-300"
+                          key={tag.trim()}
+                        >
+                          {tag.trim()}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                  <div class="flex flex-col sm:w-2/3">
+                    <h3
+                      style={{ viewTransitionName: `title:${slug}` }}
+                      class="mt-2 sm:mt-0"
+                    >
+                      {metadata.title}
+                    </h3>
+                    <p class="font-light text-gray-500 dark:text-gray-400">
+                      {metadata.excerpt?.split(' ', 35).join(' ')}...
+                    </p>
+                    {PostInfo({ timeToRead, date, hideAuthor: true })}
+                    <div class="self-end inline-flex items-center">
+                      {i18n.t('BLOG_READ_ARTICLE')}
+                    </div>
+                  </div>
+                </article>
               </a>
             ),
           )}
@@ -87,7 +111,7 @@ export default function PostList(
 
           {filteredPosts.value?.length === 0 && (
             <div style={{ marginTop: 50, textAlign: 'center' }}>
-              Can't find what you're looking for? Try using{' '}
+              {i18n.t('BLOG_CANT_FIND')}{' '}
               <a
                 target="_blank"
                 rel="noopener noreferrer"
@@ -99,35 +123,31 @@ export default function PostList(
             </div>
           )}
         </div>
-
-        <aside class="searcher-box">
-          <div class="sticky">
-            <input
-              class="post-searcher"
-              value={params.value?.q ?? ''}
-              onInput={(e) => {
-                const input = e.target as HTMLInputElement;
-                const q = input.value;
-                history.replaceState(null, '', `/blog?q=${q}`);
-              }}
-              aria-label="Search posts"
-              placeholder="Search posts"
-              type="text"
-            />
-            <div class="tags" style={{ marginTop: 10 }}>
-              {tags.map((tag) =>
-                Tag({
-                  key: tag,
-                  label: tag,
-                  q: params.value?.q ?? '',
-                }),
-              )}
-            </div>
-            <slot name="newsletter" />
+        <aside class="md:sticky w-full md:w-[40%]">
+          <input
+            class="w-full mb-4"
+            value={params.value?.q ?? ''}
+            onInput={(e) => {
+              const input = e.target as HTMLInputElement;
+              const q = input.value;
+              history.replaceState(null, '', `/blog?q=${q}`);
+            }}
+            aria-label={i18n.t('BLOG_POST_SEARCH')}
+            placeholder={i18n.t('BLOG_POST_SEARCH')}
+            type="text"
+          />
+          <div class="flex flex-wrap gap-2" style={{ marginTop: 10 }}>
+            {tags.map((tag) =>
+              Tag({
+                key: tag,
+                label: tag,
+                q: params.value?.q ?? '',
+              }),
+            )}
           </div>
         </aside>
       </div>
-    </>
+    </section>
   );
 }
 
@@ -188,7 +208,7 @@ function Tag({
       key={key}
       onClick={onTag}
       href={href}
-      class={`tag ${isActive ? 'active' : ''}`}
+      class={`py-2 px-4 border rounded text-sm ${isActive ? 'text-secondary border-secondary' : 'border-primary'}`}
     >
       {label}
     </a>
