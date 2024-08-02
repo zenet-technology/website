@@ -3,8 +3,6 @@ import path from 'node:path';
 import { dangerHTML, type RequestContext } from 'brisa';
 import type { MatchedRoute } from 'bun';
 
-import PostInfo from '@/components/post-info';
-import PostItem from '@/components/post-item';
 import clearPage from '@/utils/clearPage';
 import getMorePosts from '@/utils/getMorePosts';
 import readPost from '@/utils/readPost';
@@ -32,16 +30,14 @@ export default async function PostPage(
       <h1 style={{ viewTransitionName: `title:${slug}` }} class="post-title">
         {metadata.title}
       </h1>
-      <PostInfo date={date} timeToRead={timeToRead} />
-      <div class="tags" style={{ marginBottom: 30 }}>
-        {tags.map((tag: string) => (
-          <a key={tag} href={`/blog?q=${tag}`} class="tag">
-            {tag}
-          </a>
+      <post-info date={date} timeToRead={timeToRead} />
+      <div class="flex flex-wrap gap-2" style={{ marginTop: 10 }}>
+        {tags.map((tag) => (
+          <tag-badge key={tag} label={tag} />
         ))}
       </div>
       <BlogSeries key="series-top" title={metadata.series} series={series} />
-      <div class="post">{dangerHTML(await __html)}</div>
+      <div>{dangerHTML(await __html)}</div>
       <BlogSeries
         style={{ marginTop: 40 }}
         key="series-bottom"
@@ -51,8 +47,14 @@ export default async function PostPage(
       {morePosts.length > 0 && (
         <div style={{ marginBottom: 50 }}>
           <b class="related-posts-title">More...</b>
-          {morePosts.map((p) => (
-            <PostItem key={p.slug} {...p} />
+          {morePosts.map((morePost) => (
+            <post-card
+              key={morePost.slug}
+              slug={morePost.slug}
+              metadata={morePost.metadata}
+              date={morePost.date}
+              timeToRead={morePost.timeToRead}
+            />
           ))}
         </div>
       )}

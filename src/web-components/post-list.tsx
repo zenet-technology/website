@@ -3,7 +3,7 @@ import type { WebContext } from 'brisa';
 import filterSearch from '@/utils/filterSearch';
 import type { Post } from '@/utils/getAllPosts';
 
-const itemsPerPage = 10;
+const itemsPerPage = 5;
 
 export default function PostList(
   { tags }: { tags: string[] },
@@ -21,7 +21,7 @@ export default function PostList(
   const postsToShow = derived(() => {
     const lastIndex = itemsPerPage * currentPage.value;
     const firstIndex = lastIndex - itemsPerPage;
-    return filteredPosts.value?.slice(firstIndex, lastIndex);
+    return filteredPosts.value?.slice(firstIndex, lastIndex) ?? [];
   });
 
   return (
@@ -36,57 +36,16 @@ export default function PostList(
 
       <div class="flex flex-col md:flex-row gap-4 flex-col-reverse">
         <div class="flex-auto">
-          {postsToShow.value?.map?.(
+          {postsToShow.value.map(
             ({ slug, metadata, date, timeToRead }: Post) => (
-              <a
-                href={`/blog/${slug}`}
+              <post-card
                 key={slug}
-                title={metadata.description}
-                aria-label={metadata.description}
-              >
-                <article class="sm:flex justify-between mb-8 p-4 rounded border-gray-300 shadow dark:bg-gray-700 dark:border-gray-700">
-                  <div class="sm:mr-4 sm:w-1/3">
-                    {metadata.cover_image_mobile ? (
-                      <img
-                        loading="lazy"
-                        src={metadata.cover_image_mobile}
-                        alt={metadata.title}
-                        style={{ viewTransitionName: `img:${slug}` }}
-                        class="rounded"
-                      />
-                    ) : null}
-                    <div class="mt-2 flex flex-wrap gap-2">
-                      {metadata.tags?.split(',').map((tag) =>
-                        Tag({
-                          key: tag,
-                          label: tag,
-                          q: params.value?.q ?? '',
-                        }),
-                      )}
-                    </div>
-                  </div>
-                  <div class="flex flex-col sm:w-2/3">
-                    <h3
-                      style={{ viewTransitionName: `title:${slug}` }}
-                      class="mt-2 sm:mt-0"
-                    >
-                      {metadata.title}
-                    </h3>
-                    {PostInfo({
-                      author: metadata.author,
-                      authorLink: metadata.authorLink,
-                      timeToRead,
-                      date,
-                    })}
-                    <p class="font-light text-gray-500 dark:text-gray-300">
-                      {metadata.description}
-                    </p>
-                    <div class="self-end inline-flex items-center">
-                      {i18n.t('BLOG_READ_ARTICLE')}
-                    </div>
-                  </div>
-                </article>
-              </a>
+                slug={slug}
+                metadata={metadata}
+                date={date}
+                timeToRead={timeToRead}
+                query={params.value?.q}
+              />
             ),
           )}
 
@@ -114,7 +73,7 @@ export default function PostList(
           )}
 
           {filteredPosts.value?.length === 0 && (
-            <div style={{ marginTop: 50, textAlign: 'center' }}>
+            <div class="text-center">
               {i18n.t('BLOG_CANT_FIND')}{' '}
               <a
                 target="_blank"
@@ -140,89 +99,13 @@ export default function PostList(
             placeholder={i18n.t('BLOG_POST_SEARCH')}
             type="text"
           />
-          <div class="flex flex-wrap gap-2" style={{ marginTop: 10 }}>
-            {tags.map((tag) =>
-              Tag({
-                key: tag,
-                label: tag,
-                q: params.value?.q ?? '',
-              }),
-            )}
+          <div class="flex flex-wrap gap-2">
+            {tags.map((tag) => (
+              <tag-badge key={tag} label={tag} q={params.value?.q} />
+            ))}
           </div>
         </aside>
       </div>
     </section>
-  );
-}
-
-function PostInfo({
-  date,
-  timeToRead,
-  hideAuthor,
-  author,
-  authorLink,
-}: {
-  author: string | undefined;
-  authorLink: string | undefined;
-  date: string;
-  timeToRead: { text: string };
-  hideAuthor?: boolean;
-}) {
-  const authorElement = hideAuthor ? null : (
-    <>
-      {'by '}
-      <a href={authorLink ?? '/'}>{author}</a>
-      {' on '}
-    </>
-  );
-
-  return (
-    <time datetime={date} class="text-sm text-gray-300 dark:text-gray-500">
-      {authorElement}
-      {`${date} • ${timeToRead.text.replace(/ /g, '\u00A0')}`}
-    </time>
-  );
-}
-
-function Tag({
-  key,
-  label,
-  q = '',
-}: {
-  label: string;
-  key?: string;
-  q: string;
-}) {
-  const tag = label.toLowerCase();
-  const pathname =
-    typeof window === 'undefined' ? '' : new URL(location.href).pathname;
-  const tags = q.split(' ').map((t) => t.toLowerCase());
-  const isActive = tags.includes(tag);
-  let href = `/blog?q=${label}`;
-
-  if (pathname === '/blog') {
-    href = q ? `${pathname}?q=${q}+${label}` : `/blog?q=${label}`;
-  }
-
-  if (isActive) {
-    const q = tags.filter((t) => t !== tag).join('+');
-    href = q ? `/blog?q=${q}` : '/blog';
-  }
-
-  function onTag(e: Event) {
-    e.preventDefault();
-    e.stopPropagation();
-    history.replaceState(null, '', href);
-  }
-
-  return (
-    <a
-      key={key}
-      onClick={onTag}
-      href={href}
-      class={`bg-secondary-300 text-tertiary-700 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-tertiary-700 dark:text-secondary-300 border hover:text-primary ${isActive ? 'text-tertiary border-tertiary-700 border-secondary-300' : 'border-secondary-300 dark:border-tertiary-700'}`}
-    >
-      {label}
-    </a>
   );
 }

@@ -44,7 +44,7 @@ export default {
       'Copyright © {{date}} Zenet Technology Pte. Ltd. All rights reserved.',
   },
   WHAT_HAVE_WE_DONE: 'What have we done?',
-  OUR_CONTRIBUTIONS: 'We have help or collaborate',
+  OUR_CONTRIBUTIONS: 'We have worked, helped, contributed or collaborated',
   CONTACT_US: 'Get in touch',
   BLOG: 'Blog',
   READ_MORE: 'Read the article',
