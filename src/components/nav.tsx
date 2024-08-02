@@ -12,15 +12,11 @@ export default function Nav(
   ];
 
   return (
-    <header class="fixed w-screen z-10 shadow bg-white dark:bg-black dark:border-b dark:border-gray-700">
+    <header class="fixed top-0 w-screen z-10 shadow bg-white dark:bg-black dark:border-b dark:border-gray-700">
       <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/" class="flex items-center">
-          <theme-image
-            class="h-8"
-            alt={'logo'}
-            src="/logo/logo_full.svg"
-            darkSrc="/logo/logo_full_white.svg"
-          />
+          <logo-full-light class="hidden dark:block h-8" />
+          <logo-full-dark class="dark:hidden h-8" />
         </a>
         <nav-menu currentPage={route.pathname} navigation={navigation} />
       </div>

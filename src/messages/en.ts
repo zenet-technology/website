@@ -1,65 +1,79 @@
 export default {
-  HOME: 'Home',
-  WHAT_DO_WE_DO: 'What do we do?',
-  CONTACT: 'Contact',
-  CONTACT_US: 'Contact Us',
-  ABOUT_US: 'About Us',
-  BLOG: 'Blog',
-  BLOG_SUBTITLE:
-    'Exploring the latest trends and strategies in technology and tech management.',
-  READ_MORE: 'Read the article',
-  PRIVACY_POLICY: 'Privacy Policy',
-  COOKIES_POLICY: 'Cookies Policy',
+  CONTACT_FORM: {
+    EMAIL_REQUIRED:
+      'We need a valid email in order for us to reply your query.',
+    EMAIL: 'Email',
+    MESSAGE_PLACEHOLDER:
+      'Hello Zenet! I am Jhon Doe and I work for the company xyz. I would like...',
+    DIALOG_ERROR_TITLE: 'Something is missing',
+    DIALOG_BUTTON: 'Ok',
+    NAME_REQUIRED:
+      'We need to know your name for us to know with whom we are talking.',
+    NAME: 'Name',
+    PRIVACY_REQUIRED:
+      'You must confirm that you have read and accepted the privacy policy.',
+    SEND_MESSAGE: 'Submit Enquiry',
+    TITLE: "Let's work together",
+    PRIVACY: 'I have read and agree to the Zenet Privacy Policy (required)',
+    DIALOG_MESSAGE_SENT: 'Our team will reply to you ASAP.',
+    NEWSLETTER: 'I want to subscribe to Zenet Technology newsletter',
+    MESSAGE: 'How can we help you?',
+    MESSAGE_REQUIRED:
+      'Tell us more about how we can help you. We found that there is no message.',
+    DIALOG_TITLE_SENT: 'Message sent!',
+    SERVICE_UNAVAILABLE:
+      'Service currently unavailable, try contact directly to enquiry@zenettech.com',
+    SENDING_MESSAGE: 'Submitting...',
+  },
+  NOT_FOUND: {
+    DESCRIPTION: 'Sorry, we could not find the page you have requested.',
+    TITLE: 'Page not found',
+  },
+  LANDING: {
+    PROJECT_TITLE_6: 'Other',
+    ENGINEERING_DESCRIPTION:
+      'Think of Zenet Technology as the superhero of problem-solving. We transform wild ideas into tangible solutions, blending a pinch of creativity with a generous serving of cutting-edge technology. Our specialty lies in software excellence, where we nurture and mentor teams to reach their full potential. Where innovation meets dedication, turning your vision into a reality!',
+    PROJECT_DESCRIPTION_5:
+      "'E-Commerce', 'Marketplace', 'Social Media', 'SaaS'",
+    PROJECT_TITLE_4: 'Internet of Things (IoT)',
+    DESCRIPTION:
+      'Zenet is a technology pain relief, more than a normal consultancy business. We are here to alleviate your pain with technology, looking for impossible solutions, or helping you to find the right talent to build a new <strike>world</strike> app. Still not confident? We build it for you.',
+    PROJECT_TITLE_5: 'Web2',
+    CONSULTING_DESCRIPTION:
+      'We provide expert opinions, insightful analysis, and well-crafted recommendations tailored to your organization or product. Our expertise cover everything from savvy project management to streamlining processes, and structuring your products for success. Consider us your friendly guide to turning your ideas into reality!',
+    PROJECT_DESCRIPTION_4: "'Rasberry Pi', 'Arduino'",
+    PROJECT_DESCRIPTION_2: "'Crypto', 'DeFi', 'NFT', 'Blockchain'",
+    PROJECT_TITLE_1: 'SuperApps Integration',
+    PROJECT_DESCRIPTION_6:
+      'Are you looking for something missing from this list? We listen to you. Because not everything is yet invented.',
+    TITLE: 'Do you think tech is hard?',
+    PROJECT_TITLE_2: 'Web3',
+    ENGINEERING: 'Engineering',
+    PROJECT_DESCRIPTION_3: "'DevOps', 'Cloud', 'Microservices', 'Serverless'",
+    SUBTITLE: 'Well it is. But Zenet got you covered!',
+    CONSULTING: 'Consulting',
+    PROJECT_DESCRIPTION_1:
+      "'Ride-Hailing', 'Food Delivery', 'Reservations & Experiences', 'Travel', 'Transportation'",
+    PROJECT_TITLE_3: 'Infrastructure as a service (IaaS)',
+  },
   GET_IN_TOUCH: 'Get in touch with us',
   GET_IN_TOUCH_EMAIL: 'hello@zenettechnology.com',
   GET_IN_TOUCH_EMAIL_LINK: 'mailto:hello@zenettechnology.com',
-  LANDING: {
-    TITLE: 'Do you think tech is hard?',
-    SUBTITLE: 'Well it is. But Zenet got you covered!',
-    DESCRIPTION:
-      'Zenet is a tech pain relief, more than a normal consultancy business. We are here to alleviate your pain with tech, looking for impossible solutions, or helping you to find the right talent to build a new <strike>world</strike> app. Still not confident? We build it for you.',
-    CONSULTING: 'Consulting',
-    CONSULTING_DESCRIPTION:
-      'Zenet provides expert opinions, analysis and recommendations to your organization or product. Our expertise goes from project management, processes, complex web development, structuring of your products and guidance to build it.',
-    OUTSOURCING: 'Outsourcing',
-    OUTSOURCING_DESCRIPTION:
-      'Zenet knows that a big responsibility comes with handling talent and expertise in the tech world. We will handle that for you so you can focus on building your business. Leave the tech challenge to us, be it a product or an improvement of your existing system, trust us in making your business journey more smooth.',
-    TALENT_ACQUISITION: 'Talent Acquisition',
-    TALENT_ACQUISITION_DESCRIPTION:
-      "Zenet knows that hiring in tech is tough. And, with all the resources invested, you would want to do this right. Zenet will be by your side as you design tasks, screen candidates, interview, evaluate, assess, and adapt to your company's steps. It's your decision to hire, and it's our mission to ensure that you hire the right talent for your team. We know what you want, and if you like it, you take it!",
-    MENTORING: 'Mentoring',
-    MENTORING_DESCRIPTION:
-      'Hiring is tough, but running an efficient tech team is nothing easier. Sometimes the seniority is unbalanced and the team seek progress and better performance. We can help your team grow in knowledge, be more efficient, and most importantly happier.',
-  },
-  CONTACT_FORM: {
-    TITLE: "Let's work together",
-    NAME: 'Name',
-    EMAIL: 'Email',
-    MESSAGE: 'How can we help you?',
-    MESSAGE_PLACEHOLDER:
-      'Hello Zenet! I am Jhon Doe and I work for the company xyz. I would like...',
-    SEND_MESSAGE: 'Submit Enquiry',
-    SENDING_MESSAGE: 'Submitting...',
-    PRIVACY: 'I have read and agree to the Zenet Privacy Policy (required)',
-    NEWSLETTER: 'I want to subscribe to Zenet Technology newsletter',
-    SERVICE_UNAVAILABLE:
-      'Service currently unavailable, try contact directly to enquiry@zenettech.com',
-    DIALOG_TITLE_SENT: 'Message sent!',
-    DIALOG_MESSAGE_SENT: 'Our team will reply to you ASAP.',
-    DIALOG_ERROR_TITLE: 'Something is missing',
-    DIALOG_BUTTON: 'Ok',
-    PRIVACY_REQUIRED:
-      'You must confirm that you have read and accepted the privacy policy.',
-    NAME_REQUIRED:
-      'We need to know your name for us to know with whom we are talking.',
-    EMAIL_REQUIRED:
-      'We need a valid email in order for us to reply your query.',
-    MESSAGE_REQUIRED:
-      'Tell us more about how we can help you. We found that there is no message.',
-  },
+  PRIVACY_POLICY: 'Privacy Policy',
+  ABOUT_US: 'About Us',
+  WHAT_DO_WE_DO: 'What do we do?',
+  CONTACT: 'Contact',
+  HOME: 'Home',
+  COOKIES_POLICY: 'Cookies Policy',
   FOOTER: {
     COPYRIGHT:
       'Copyright © {{date}} Zenet Technology Pte. Ltd. All rights reserved.',
   },
-  PAGE_NOT_FOUND: 'Page Not found',
+  WHAT_HAVE_WE_DONE: 'What have we done?',
+  OUR_CONTRIBUTIONS: 'We have help or collaborate',
+  CONTACT_US: 'Get in touch',
+  BLOG: 'Blog',
+  READ_MORE: 'Read the article',
+  BLOG_SUBTITLE:
+    'Exploring the latest trends and strategies in technology and tech management.',
 } as const;

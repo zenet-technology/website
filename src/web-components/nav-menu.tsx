@@ -18,9 +18,9 @@ export default function NavMenu(
 
   const getMenu = () => {
     return (
-      <ul class="font-medium flex flex-col rounded md:flex-row md:space-x-8 md:mt-0 md:border-0 dark:border-gray-700">
+      <ul class="list-none font-light flex flex-col items-center rounded md:flex-row space-y-0 md:space-x-8 mb-0 md:mt-0 md:border-0 dark:border-gray-700">
         {navigation.map((item) => (
-          <li key={item.name}>
+          <li key={item.name} class="w-full text-nowrap">
             <a
               href={item.href}
               class={`block rounded py-2 px-4 md:py-0 ${
@@ -56,7 +56,7 @@ export default function NavMenu(
         ) : (
           <>
             <span class="sr-only">Open main menu</span>
-            <nav-icon class="w-4 h-4 text-white hover:text-primary" />
+            <icon-nav class="w-4 h-4 text-white hover:text-primary" />
           </>
         )}
       </button>
