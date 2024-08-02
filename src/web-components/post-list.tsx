@@ -72,7 +72,12 @@ export default function PostList(
                     >
                       {metadata.title}
                     </h3>
-                    {PostInfo({ timeToRead, date, hideAuthor: true })}
+                    {PostInfo({
+                      author: metadata.author,
+                      authorLink: metadata.authorLink,
+                      timeToRead,
+                      date,
+                    })}
                     <p class="font-light text-gray-500 dark:text-gray-400">
                       {metadata.description}
                     </p>
@@ -154,11 +159,19 @@ function PostInfo({
   date,
   timeToRead,
   hideAuthor,
-}: { date: string; timeToRead: { text: string }; hideAuthor?: boolean }) {
+  author,
+  authorLink,
+}: {
+  author: string | undefined;
+  authorLink: string | undefined;
+  date: string;
+  timeToRead: { text: string };
+  hideAuthor?: boolean;
+}) {
   const authorElement = hideAuthor ? null : (
     <>
       {'by '}
-      <a href="/">albertsabate</a>
+      <a href={authorLink ?? '/'}>{author}</a>
       {' on '}
     </>
   );
@@ -201,13 +214,6 @@ function Tag({
     e.stopPropagation();
     history.replaceState(null, '', href);
   }
-
-  // <div
-  //   class="bg-secondary-300 text-tertiary-700 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-tertiary-700 dark:text-secondary-300"
-  //   key={tag.trim()}
-  // >
-  //   {tag.trim()}
-  // </div>
 
   return (
     <a
