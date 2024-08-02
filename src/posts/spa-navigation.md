@@ -1,5 +1,5 @@
 ---
-title: 'SPA-Like Navigation Preserving Web Component State by AralRoca
+title: 'SPA-Like Navigation Preserving Web Component State by AralRoca'
 description: Learn how to keep your web components' state intact while navigating, just like in a SPA!
 tags: javascript, experimental, brisa
 series: 'HTML streaming'
