@@ -3,9 +3,8 @@ title: 'Navigating the Digital Nomad Life: Weighing Cloud Nine Against Stormy Sk
 description: Embracing the digital nomad trend, businesses today face the intricate task of blending remote work culture into their operational fabric. This shift demands reimagined leadership, enhanced cybersecurity, and a mutual pledge for flexibility and accountability between employers and employees. As companies navigate this terrain, the journey toward a hybrid work environment unfolds, marked by collective wisdom and innovation. Would you be ready to make the transition smoother? Zenet Technology is your go-to partner for seamlessly shifting to this new frontier.
 author: Albert Sabaté
 tags: Digital Nomads, Remote Work Culture, Leadership, Employee Motivation, Cybersecurity, Collective Wisdom, Innovation, Hybrid Work Environment
-cover_image: /images/nomad-live.webp
-cover_image_mobile: /images/nomad-live.webp
-cover_color: '#212329'
+coverImage: /images/nomad-live.webp
+coverImageMobile: /images/nomad-live.webp
 created: '2023-10-20'
 ---
 

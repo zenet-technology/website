@@ -4,9 +4,8 @@ description: Learn how to keep your web components' state intact while navigatin
 author: Aral Roca
 tags: javascript, experimental, brisa
 series: 'HTML streaming'
-cover_image: /images/spa.webp
-cover_image_mobile: /images/spa.webp
-cover_color: '#212329'
+coverImage: /images/spa.webp
+coverImageMobile: /images/spa.webp
 created: '2024-05-30'
 ---
 

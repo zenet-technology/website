@@ -54,4 +54,5 @@ export default {
   BLOG_POST_SEARCH: 'Search posts',
   BLOG_CANT_FIND: "Can't find what you're looking for? Try using",
   BLOG_READ_ARTICLE: 'Read the article →',
+  BLOG_SEE_MORE: 'More...',
 } as const;

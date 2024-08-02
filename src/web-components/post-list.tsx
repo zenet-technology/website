@@ -44,7 +44,7 @@ export default function PostList(
                 metadata={metadata}
                 date={date}
                 timeToRead={timeToRead}
-                query={params.value?.q}
+                query={params.value?.q ?? ''}
               />
             ),
           )}

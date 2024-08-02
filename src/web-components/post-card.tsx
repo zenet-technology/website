@@ -14,7 +14,6 @@ export default function PostCard(
   { key, slug, metadata, timeToRead, date, query = '' }: Props,
   { i18n }: WebContext,
 ) {
-  console.log({ key, slug, metadata, timeToRead, date, query });
   return (
     <a
       href={`/blog/${slug}`}
@@ -24,10 +23,10 @@ export default function PostCard(
     >
       <article class="sm:flex justify-between mb-8 p-4 rounded border-gray-300 shadow dark:bg-gray-700 dark:border-gray-700">
         <div class="sm:mr-4 sm:w-1/3">
-          {metadata.cover_image_mobile ? (
+          {metadata.coverImageMobile ? (
             <img
               loading="lazy"
-              src={metadata.cover_image_mobile}
+              src={metadata.coverImageMobile}
               alt={metadata.title}
               style={{ viewTransitionName: `img:${slug}` }}
               class="rounded"

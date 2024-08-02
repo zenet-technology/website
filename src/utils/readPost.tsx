@@ -32,9 +32,11 @@ export default function readPost(slug: string): PostContent {
 
   const marked = new Marked(
     markedHighlight({
-      langPrefix: 'hljs language-',
+      langPrefix: 'hljs lang-',
       highlight(code, lang) {
-        const language = hljs.getLanguage(lang) ? lang : 'plaintext';
+        const language = hljs.getLanguage(lang)
+          ? lang
+          : hljs.highlightAuto(code).value;
         return hljs.highlight(code, { language }).value;
       },
     }),

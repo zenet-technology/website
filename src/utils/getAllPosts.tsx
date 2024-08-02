@@ -10,8 +10,8 @@ export type Metadata = {
   description?: string;
   created?: string | Date;
   tags?: string;
-  cover_image?: string;
-  cover_image_mobile?: string;
+  coverImage?: string;
+  coverImageMobile?: string;
   series?: string;
   author?: string;
   authorLink?: string;

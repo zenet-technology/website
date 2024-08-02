@@ -11,33 +11,51 @@ import BlogSeries from '@/components/blog-series';
 
 export default async function PostPage(
   _: undefined,
-  { store, route }: RequestContext,
+  { store, route, i18n }: RequestContext,
 ) {
   const { slug } = route.params;
   const { metadata, date, morePosts, series, __html, tags, timeToRead } =
     store.get('post') as Awaited<ReturnType<typeof loadPostData>>;
 
   return (
-    <>
-      <div key={slug} class="cover-image">
-        <img
-          loading="eager"
-          src={metadata.cover_image}
-          style={{ viewTransitionName: `img:${slug}`, aspectRatio: '960/432' }}
-          alt={metadata.title}
+    <article class="container mx-auto max-w-5xl px-4 lg:px-6 pt-8 lg:pt-16">
+      <hgroup class="mx-auto max-w-screen-sm text-center lg:mb-16 mb-8">
+        <h1
+          style={{ viewTransitionName: `title:${slug}` }}
+          class="text-4xl font-bold"
+        >
+          {metadata.title}
+        </h1>
+        <post-info
+          author={metadata.author}
+          date={date}
+          timeToRead={timeToRead}
         />
-      </div>
-      <h1 style={{ viewTransitionName: `title:${slug}` }} class="post-title">
-        {metadata.title}
-      </h1>
-      <post-info date={date} timeToRead={timeToRead} />
-      <div class="flex flex-wrap gap-2" style={{ marginTop: 10 }}>
+        <p class="font-light text-gray-500 text-base sm:text-lg dark:text-gray-400">
+          {metadata.description}
+        </p>
+      </hgroup>
+      {metadata.coverImage && (
+        <div key={slug} class="cover-image">
+          <img
+            loading="eager"
+            src={metadata.coverImage}
+            style={{
+              viewTransitionName: `img:${slug}`,
+              aspectRatio: '960/432',
+            }}
+            class="w-full rounded"
+            alt={metadata.title}
+          />
+        </div>
+      )}
+      <div class="flex flex-wrap gap-2 mt-2">
         {tags.map((tag) => (
           <tag-badge key={tag} label={tag} />
         ))}
       </div>
       <BlogSeries key="series-top" title={metadata.series} series={series} />
-      <div>{dangerHTML(await __html)}</div>
+      <div class="my-8">{dangerHTML(await __html)}</div>
       <BlogSeries
         style={{ marginTop: 40 }}
         key="series-bottom"
@@ -45,8 +63,8 @@ export default async function PostPage(
         series={series}
       />
       {morePosts.length > 0 && (
-        <div style={{ marginBottom: 50 }}>
-          <b class="related-posts-title">More...</b>
+        <div>
+          <b>{i18n.t('BLOG_SEE_MORE')}</b>
           {morePosts.map((morePost) => (
             <post-card
               key={morePost.slug}
@@ -58,7 +76,7 @@ export default async function PostPage(
           ))}
         </div>
       )}
-    </>
+    </article>
   );
 }
 
