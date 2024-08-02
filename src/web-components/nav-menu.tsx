@@ -18,7 +18,7 @@ export default function NavMenu(
 
   const getMenu = () => {
     return (
-      <ul class="list-none font-light flex flex-col items-center rounded md:flex-row space-y-0 md:space-x-8 mb-0 md:mt-0 md:border-0 dark:border-gray-700">
+      <ul class="list-none font-light flex flex-col items-center rounded md:flex-row space-y-0 md:space-x-8 mb-0 md:mt-0 md:border-0">
         {navigation.map((item) => (
           <li key={item.name} class="w-full text-nowrap">
             <a
@@ -26,7 +26,7 @@ export default function NavMenu(
               class={`block rounded py-2 px-4 md:py-0 ${
                 item.href === currentPage
                   ? 'bg-primary text-black md:bg-transparent md:text-primary'
-                  : 'text-black hover:text-primary'
+                  : 'text-black dark:text-white hover:text-primary'
               }`.trim()}
             >
               {item.name}

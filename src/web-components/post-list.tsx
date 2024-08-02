@@ -78,7 +78,7 @@ export default function PostList(
                       timeToRead,
                       date,
                     })}
-                    <p class="font-light text-gray-500 dark:text-gray-400">
+                    <p class="font-light text-gray-500 dark:text-gray-300">
                       {metadata.description}
                     </p>
                     <div class="self-end inline-flex items-center">
@@ -177,7 +177,7 @@ function PostInfo({
   );
 
   return (
-    <time datetime={date} class="text-sm text-gray-300 dark:text-gray-700">
+    <time datetime={date} class="text-sm text-gray-300 dark:text-gray-500">
       {authorElement}
       {`${date} • ${timeToRead.text.replace(/ /g, '\u00A0')}`}
     </time>

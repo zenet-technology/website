@@ -73,11 +73,11 @@ export default function Home(_: undefined, { i18n }: RequestContext) {
                 {i18n.t('LANDING.SUBTITLE')}
               </p>
             </hgroup>
-            <p class="mb-8 text-gray-700 dark:text-gray-50">
+            <p class="mb-8 text-gray-700 dark:text-gray-300">
               {dangerHTML(i18n.t('LANDING.DESCRIPTION'))}
             </p>
             <a href="#contact">
-              <button type="button" class="w-56">
+              <button type="button" class="w-56 primary">
                 {i18n.t('CONTACT_US')}
               </button>
             </a>
