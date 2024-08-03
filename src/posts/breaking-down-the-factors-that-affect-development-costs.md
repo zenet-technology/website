@@ -1,12 +1,11 @@
 ---
-title: 'SPA-Like Navigation Preserving Web Component State by AralRoca'
-description: Learn how to keep your web components' state intact while navigating, just like in a SPA!
-author: Aral Roca
-tags: javascript, experimental, brisa
-series: 'HTML streaming'
-coverImage: /images/spa.webp
-coverImageMobile: /images/spa.webp
-created: '2024-05-30'
+title: 'Breaking Down the Factors that Affect Development Costs'
+description: Are you planning to develop a new software or application but want to know the costs? Well, you're not alone. Developing a software application can be a complex and costly process. Many factors can impact development costs, from people to technology to design to many factors. This article will discuss the key factors affecting development costs and explore how each can impact your project. By understanding these factors, you can better manage your development costs and bring your project to success. So, let's dive in and explore the world of software development costs!
+author: Albert Sabaté
+tags: development cost, software development, app development, consulting, outsourcing
+coverImage: /images/breaking-down-the-factors-that-affect-development-costs/developer-price.webp
+coverImageMobile: /images/breaking-down-the-factors-that-affect-development-costs/developer-price.webp
+created: '2023-09-29'
 ---
 
 In this third and final article in the series on HTML Streaming, we will explore the practical implementation of the [**Diff DOM Streaming**](https://github.com/aralroca/diff-dom-streaming) library in web browsing. This approach will allow **any website** using **web components** to **retain its state during browsing**. We will discuss in detail how to achieve this step by step using **VanillaJS** and [**Bun**](https://bun.sh/).

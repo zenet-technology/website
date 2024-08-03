@@ -271,7 +271,7 @@
   }
 
   ::selection {
-    @apply bg-primary;
+    @apply bg-primary text-black dark:text-white;
   }
 
   h1 {
