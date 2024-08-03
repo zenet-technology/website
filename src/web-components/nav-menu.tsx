@@ -1,4 +1,4 @@
-import { createPortal, type WebContext } from 'brisa';
+import { type WebContext, createPortal } from 'brisa';
 
 interface Props {
   navigation: { href: string; name: string }[];

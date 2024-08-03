@@ -1,0 +1,115 @@
+name: CD
+
+on: # This triggers the workflow when changes are pushed to your repository
+  workflow_run:
+    workflows: [CI]
+    branches: [main]
+    types:
+      - completed
+  pull_request: # This ensures the workflow also runs for pull requests targeting the main branch.
+    types:
+      - closed
+    branches:
+      - main
+
+# Concurrency group name ensures concurrent workflow runs wait for any in-progress job to finish
+concurrency:
+  group: merge-${{ github.ref }}
+
+jobs:
+  deploy: # This is the fourth job, responsible for the deployment.
+    if: github.event.pull_request.merged == true || github.event.workflow_run.conclusion == 'success'
+    runs-on: viatsy-runner
+
+    steps:
+      - name: 📦 Checkout project repo
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup Bun + install deps
+        uses: ./.github/actions/setup-bun-install
+
+      - name: Set short SHA on vars
+        id: vars
+        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+
+      - name: Install buildah
+        run: |
+          . /etc/lsb-release && \
+          sudo apt-get update && \
+          sudo apt-get install -y gnupg2 apt-transport-https && \
+          echo "deb http://download.opensuse.org/repositories/devel:/kubic:/libcontainers:/stable/xUbuntu_${DISTRIB_RELEASE}/ /" | sudo tee /etc/apt/sources.list.d/devel:kubic:libcontainers:stable.list && \
+          curl -fsL "https://download.opensuse.org/repositories/devel:kubic:libcontainers:stable/xUbuntu_${DISTRIB_RELEASE}/Release.key" | sudo apt-key add - && \
+          echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/helm.gpg] https://baltocdn.com/helm/stable/debian/ all main" | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list && \
+          curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null && \
+          sudo apt-get update && \
+          sudo apt-get install -y buildah fuse-overlayfs podman helm
+
+      - name: Build and push viatsy auth api
+        id: build-viatsy-auth-api
+        uses: redhat-actions/buildah-build@v2
+        with:
+          image: viatsy/auth-api
+          tags: latest ${{ steps.vars.outputs.sha_short }}
+          context: .
+          containerfiles: |
+            ./apis/auth/Dockerfile
+
+      - name: Push viatsy auth api
+        uses: redhat-actions/push-to-registry@v2
+        with:
+          registry: registry.viatsy.com
+          image: ${{ steps.build-viatsy-auth-api.outputs.image }}
+          tags: ${{ steps.build-viatsy-auth-api.outputs.tags }}
+
+      - name: Build and push vtapsy api
+        id: build-vtapsy-api
+        uses: redhat-actions/buildah-build@v2
+        with:
+          image: vtapsy/api
+          tags: latest ${{ steps.vars.outputs.sha_short }}
+          context: .
+          containerfiles: |
+            ./apis/vtapsy/Dockerfile
+
+      - name: Push vtapsy api
+        uses: redhat-actions/push-to-registry@v2
+        with:
+          registry: registry.viatsy.com
+          image: ${{ steps.build-vtapsy-api.outputs.image }}
+          tags: ${{ steps.build-vtapsy-api.outputs.tags }}
+
+      - name: Build and push vtapsy api
+        id: build-vtapsy-app
+        uses: redhat-actions/buildah-build@v2
+        with:
+          image: vtapsy/app
+          tags: latest ${{ steps.vars.outputs.sha_short }}
+          context: .
+          containerfiles: |
+            ./apps/vtapsy/Dockerfile
+
+      - name: Push vtapsy app
+        uses: redhat-actions/push-to-registry@v2
+        with:
+          registry: registry.viatsy.com
+          image: ${{ steps.build-vtapsy-app.outputs.image }}
+          tags: ${{ steps.build-vtapsy-app.outputs.tags }}
+
+      - name: Write out the kubeconfig info
+        run: |
+          echo ${{ secrets.KUBECONFIG }} | base64 -d > /tmp/config
+          chmod 600 /tmp/config
+
+      - name: Viatsy Deploy # This step runs your deployment command.
+        env:
+          TURBO_TELEMETRY_MESSAGE_DISABLED: 1
+          TAG: ${{ steps.vars.outputs.sha_short }}
+          KUBECONFIG: /tmp/config
+          VTAPSY_DB_URL: ${{ secrets.VTAPSY_DB_URL }}
+          AUTH_DB_URL: ${{ secrets.AUTH_DB_URL }}
+        run: bun run deploy
+
+      - name: Cleanup step
+        if: always()
+        run: |
+          rm -f /tmp/config

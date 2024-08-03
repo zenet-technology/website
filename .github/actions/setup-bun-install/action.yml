@@ -1,0 +1,16 @@
+name: 'Setup Bun + Install Dependencies'
+description: 'Setup Bun + Install Dependencies'
+runs:
+  using: 'composite'
+  steps:
+    # Needed to push to Cloudflare - temporal until https://github.com/oven-sh/bun/issues/8867
+    - name: Setup node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 22
+
+    - uses: oven-sh/setup-bun@v1
+
+    - name: 📦 Install Project Dependencies
+      run: bun install --frozen-lockfile
+      shell: bash

@@ -1,4 +1,4 @@
-import { dangerHTML, type RequestContext } from 'brisa';
+import { type RequestContext, dangerHTML } from 'brisa';
 
 export default function Home(_: undefined, { i18n }: RequestContext) {
   const features = [

@@ -1,5 +1,5 @@
-import type { WebContext } from 'brisa';
 import type { Metadata } from '@/utils/getAllPosts';
+import type { WebContext } from 'brisa';
 
 interface Props {
   slug: string;

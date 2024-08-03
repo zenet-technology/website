@@ -1,12 +1,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { dangerHTML, type RequestContext } from 'brisa';
+import { type RequestContext, dangerHTML } from 'brisa';
 import type { MatchedRoute } from 'bun';
 
+import BlogSeries from '@/components/blog-series';
 import clearPage from '@/utils/clearPage';
 import getMorePosts from '@/utils/getMorePosts';
 import readPost from '@/utils/readPost';
-import BlogSeries from '@/components/blog-series';
 
 export default async function PostPage(
   _: undefined,

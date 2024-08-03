@@ -1,12 +1,12 @@
 import fs from 'node:fs';
+import path from 'node:path';
+import matter from 'gray-matter';
+import hljs from 'highlight.js';
 import { Marked } from 'marked';
 import { markedHighlight } from 'marked-highlight';
-import matter from 'gray-matter';
-import path from 'node:path';
 import readingTime from 'reading-time';
-import hljs from 'highlight.js';
-import niceDateText from './niceDateText';
 import type { Metadata } from './getAllPosts';
+import niceDateText from './niceDateText';
 
 export type PostContent = {
   metadata: Metadata;

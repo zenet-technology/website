@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    types: [opened, synchronize]
+
+permissions:
+  id-token: write # This is required for requesting the JWT
+  contents: read # This is required for actions/checkout
+
+jobs:
+  build:
+    name: Lint and Test
+    timeout-minutes: 15
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📦 Checkout project repo
+        uses: actions/checkout@v4
+
+      - name: 📦 Setup Bun + install deps
+        uses: ./.github/actions/setup-bun-install
+
+      - name: Biome CI
+        run: bun run biome:ci
+
+      - name: TS Check
+        run: bun run tsc:check

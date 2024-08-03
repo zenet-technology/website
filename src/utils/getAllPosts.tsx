@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import readingTime, { type ReadTimeResults } from 'reading-time';
 import matter from 'gray-matter';
+import readingTime, { type ReadTimeResults } from 'reading-time';
 import niceDateText from './niceDateText';
 
 export type Metadata = {

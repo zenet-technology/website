@@ -1,5 +1,5 @@
-import type { RequestContext } from 'brisa';
 import getAllPosts from '@/utils/getAllPosts';
+import type { RequestContext } from 'brisa';
 
 export default function Blog(_: undefined, { store, route }: RequestContext) {
   const posts = getAllPosts();

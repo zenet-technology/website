@@ -1,7 +1,7 @@
-import pageBadges from 'js-paging';
-import type { WebContext } from 'brisa';
 import filterSearch from '@/utils/filterSearch';
 import type { Post } from '@/utils/getAllPosts';
+import type { WebContext } from 'brisa';
+import pageBadges from 'js-paging';
 
 interface Props {
   path: string;

@@ -1,9 +1,9 @@
+import Contact from '@/components/contact';
+import Footer from '@/components/footer';
+import Nav from '@/components/nav';
 import getCanonical from '@/utils/getCanonical';
 import type { RequestContext } from 'brisa';
 import appStyle from '../style.css';
-import Nav from '@/components/nav';
-import Footer from '@/components/footer';
-import Contact from '@/components/contact';
 
 export default function Layout(
   { children }: { children: JSX.Element },

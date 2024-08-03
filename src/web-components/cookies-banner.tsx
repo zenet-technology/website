@@ -1,5 +1,5 @@
-import type { WebContext } from 'brisa';
 import { deleteCookie, getCookie, setCookie } from '@/utils/cookie';
+import type { WebContext } from 'brisa';
 
 export default function CookiesBanner(
   _: undefined,
