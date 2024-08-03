@@ -4,7 +4,7 @@
 <p align="center"><b>Zenet Technology</b>'s site.</p>
 
 <p align="center">
-  <i>Visit here 👉 https://zenettechnology.com </i>
+  <i>Visit here 👉 https://zenettechnology.com</i>
 </p>
 <br />
 <br />

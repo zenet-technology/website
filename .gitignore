@@ -31,3 +31,5 @@ backup
 .turbo
 .wrangler
 .vercel
+src/public/rss.xml
+src/public/sitemap.xml

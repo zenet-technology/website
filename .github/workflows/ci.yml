@@ -24,7 +24,7 @@ jobs:
         uses: ./.github/actions/setup-bun-install
 
       - name: Biome CI
-        run: bun run biome:ci
+        run: bun run ci
 
       - name: TS Check
         run: bun run tsc:check
