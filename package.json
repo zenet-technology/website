@@ -3,9 +3,10 @@
   "module": "src/pages/index.tsx",
   "type": "module",
   "scripts": {
+    "build": "bun run sitemap && bun run rss && brisa build",
+    "deploy": "wrangler pages deploy",
     "dev": "brisa dev",
     "dev:debug": "brisa dev --debug",
-    "build": "bun run sitemap && bun run rss && brisa build",
     "start": "brisa start",
     "sitemap": "bun run src/utils/generateSitemap.tsx",
     "rss": "bun run src/utils/generateRss.tsx",
