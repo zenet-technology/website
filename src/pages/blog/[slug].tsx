@@ -64,7 +64,7 @@ export default async function PostPage(
       />
       {morePosts.length > 0 && (
         <div>
-          <b>{i18n.t('BLOG_SEE_MORE')}</b>
+          <b class="block mb-4">{i18n.t('BLOG_SEE_MORE')}</b>
           {morePosts.map((morePost) => (
             <post-card
               key={morePost.slug}

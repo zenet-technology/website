@@ -55,4 +55,5 @@ export default {
   BLOG_CANT_FIND: "Can't find what you're looking for? Try using",
   BLOG_READ_ARTICLE: 'Read the article →',
   BLOG_SEE_MORE: 'More...',
+  BLOG_SERIES: '{{title}} ({{length}} Part Series)',
 } as const;
