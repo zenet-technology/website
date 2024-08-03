@@ -26,5 +26,7 @@ jobs:
       - name: Biome CI
         run: bun run ci
 
-      - name: TS Check
-        run: bun run tsc:check
+      - name: Build & TS Check
+        run: 
+          bun run build
+          bun run tsc:check
