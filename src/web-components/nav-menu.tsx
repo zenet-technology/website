@@ -16,8 +16,6 @@ export default function NavMenu(
     portalElement.value = document.querySelector('nav[id="menu"]');
   });
 
-  console.log(navigation, currentPage);
-
   const getMenu = () => {
     return (
       <ul class="list-none font-light flex flex-col items-center rounded md:flex-row space-y-0 md:space-x-8 mb-0 md:mt-0 md:border-0">
