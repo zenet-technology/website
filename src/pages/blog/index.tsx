@@ -1,7 +1,7 @@
 import type { RequestContext } from 'brisa';
 import getAllPosts from '@/utils/getAllPosts';
 
-export default function Blog(_: undefined, { store }: RequestContext) {
+export default function Blog(_: undefined, { store, route }: RequestContext) {
   const posts = getAllPosts();
   const tags = posts.reduce<string[]>((t, post) => {
     const postTags = post.metadata.tags?.split(',') ?? [];
@@ -19,5 +19,12 @@ export default function Blog(_: undefined, { store }: RequestContext) {
   store.set('posts', posts);
   store.transferToClient(['tags', 'posts']);
 
-  return <post-list tags={tags} />;
+  return (
+    <post-list
+      path={route.pathname.split('?')[0]}
+      tags={tags}
+      search={route.query.q}
+      page={Number.isInteger(route.query.page) ? Number(route.query.page) : 1}
+    />
+  );
 }

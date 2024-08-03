@@ -3,26 +3,44 @@ import type { WebContext } from 'brisa';
 import filterSearch from '@/utils/filterSearch';
 import type { Post } from '@/utils/getAllPosts';
 
-const itemsPerPage = 5;
+interface Props {
+  path: string;
+  tags: string[];
+  search?: string;
+  page?: number;
+}
 
 export default function PostList(
-  { tags }: { tags: string[] },
-  { i18n, store, params, derived }: WebContext,
+  { path, tags, page = 1, search = '' }: Props,
+  { i18n, state, store, derived }: WebContext,
 ) {
-  const filteredPosts = derived(() =>
-    params.value?.q
-      ? store.get<Post[]>('posts').filter(filterSearch(params.value?.q))
-      : store.get<Post[]>('posts'),
+  const itemsPerPage = 5;
+  const currentPage = state(page);
+  const currentSearch = state(search);
+  const filteredPosts = derived(
+    () =>
+      (currentSearch.value
+        ? store
+            .get<Post[] | null>('posts')
+            ?.filter(filterSearch(currentSearch.value))
+        : store.get<Post[] | null>('posts')) ?? [],
   );
-  const currentPage = derived(() => Number(params.value?.page || 1));
   const pages = derived(() =>
-    Math.ceil(filteredPosts.value?.length / itemsPerPage),
+    Math.ceil(filteredPosts.value.length / itemsPerPage),
   );
+
   const postsToShow = derived(() => {
     const lastIndex = itemsPerPage * currentPage.value;
     const firstIndex = lastIndex - itemsPerPage;
-    return filteredPosts.value?.slice(firstIndex, lastIndex) ?? [];
+    return filteredPosts.value.slice(firstIndex, lastIndex) ?? [];
   });
+
+  const onInput = (e: JSX.TargetedInputEvent<HTMLInputElement>) => {
+    const input = e.currentTarget;
+    const q = input.value;
+    currentSearch.value = q;
+    history.replaceState(null, '', q ? `${path}?q=${q}` : path);
+  };
 
   return (
     <section class="container mx-auto max-w-5xl px-4 lg:px-6 py-8 lg:py-16">
@@ -40,11 +58,12 @@ export default function PostList(
             ({ slug, metadata, date, timeToRead }: Post) => (
               <post-card
                 key={slug}
+                path={path}
                 slug={slug}
                 metadata={metadata}
                 date={date}
                 timeToRead={timeToRead}
-                query={params.value?.q ?? ''}
+                query={currentSearch.value}
               />
             ),
           )}
@@ -58,7 +77,7 @@ export default function PostList(
                 num ? (
                   <a
                     key={`page-${num}`}
-                    href={`/blog?q=${params.value?.q || ''}&page=${num}`}
+                    href={`${path}?q=${currentSearch.value}&page=${num}`}
                     class={`badge ${num === currentPage.value ? 'current' : ''}`}
                   >
                     {num}{' '}
@@ -78,7 +97,7 @@ export default function PostList(
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href={`https://www.google.com/search?q=site:zenettechnology.com+${params.value?.q ?? ''}`}
+                href={`https://www.google.com/search?q=site:zenettechnology.com+${currentSearch.value}`}
               >
                 Google
               </a>
@@ -89,19 +108,20 @@ export default function PostList(
         <aside class="md:sticky w-full md:max-w-[320px]">
           <input
             class="w-full mb-4"
-            value={params.value?.q ?? ''}
-            onInput={(e) => {
-              const input = e.target as HTMLInputElement;
-              const q = input.value;
-              history.replaceState(null, '', `/blog?q=${q}`);
-            }}
+            value={search}
+            onInput={onInput}
             aria-label={i18n.t('BLOG_POST_SEARCH')}
             placeholder={i18n.t('BLOG_POST_SEARCH')}
             type="text"
           />
           <div class="flex flex-wrap gap-2">
             {tags.map((tag) => (
-              <tag-badge key={tag} label={tag} q={params.value?.q} />
+              <tag-badge
+                path={path}
+                key={tag}
+                label={tag}
+                q={currentSearch.value}
+              />
             ))}
           </div>
         </aside>

@@ -1,4 +1,4 @@
-const clear = (t: string) => t.trim().toLowerCase();
+import { clear } from './clear';
 
 /**
  * @todo Simplify using regex?

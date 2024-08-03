@@ -6,12 +6,13 @@ interface Props {
   metadata: Metadata;
   date: string;
   timeToRead: { text: string };
+  path?: string;
   key?: string;
   query?: string;
 }
 
 export default function PostCard(
-  { key, slug, metadata, timeToRead, date, query = '' }: Props,
+  { key, path = '/', slug, metadata, timeToRead, date, query = '' }: Props,
   { i18n }: WebContext,
 ) {
   return (
@@ -34,7 +35,7 @@ export default function PostCard(
           ) : null}
           <div class="mt-2 flex flex-wrap gap-2">
             {metadata.tags?.split(',').map((tag) => (
-              <tag-badge key={tag} label={tag} q={query} />
+              <tag-badge key={tag} path={path} label={tag} q={query} />
             ))}
           </div>
         </div>
