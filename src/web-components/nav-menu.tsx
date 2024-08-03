@@ -16,6 +16,8 @@ export default function NavMenu(
     portalElement.value = document.querySelector('nav[id="menu"]');
   });
 
+  console.log(navigation, currentPage);
+
   const getMenu = () => {
     return (
       <ul class="list-none font-light flex flex-col items-center rounded md:flex-row space-y-0 md:space-x-8 mb-0 md:mt-0 md:border-0">
@@ -24,7 +26,8 @@ export default function NavMenu(
             <a
               href={item.href}
               class={`block rounded py-2 px-4 md:py-0 ${
-                item.href === currentPage
+                (currentPage.startsWith(item.href) && item.href !== '/') ||
+                currentPage === item.href
                   ? 'bg-primary text-black md:bg-transparent md:text-primary'
                   : 'text-black dark:text-white hover:text-primary'
               }`.trim()}
