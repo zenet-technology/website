@@ -56,7 +56,7 @@ export default function NavMenu(
         ) : (
           <>
             <span class="sr-only">Open main menu</span>
-            <icon-nav class="w-4 h-4 text-white hover:text-primary" />
+            <icon-nav class="w-4 h-4 text-white dark:text-black hover:text-primary" />
           </>
         )}
       </button>
