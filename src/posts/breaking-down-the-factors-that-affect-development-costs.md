@@ -104,8 +104,3 @@ So the next time someone asks, "How much does it cost to develop an app?" You ca
 Bon appétit!
 
 > Please do not hesitate to book a consulting session with us here. We would love to hear your business idea and help you realize it!
----
-
-In this third and final article in the series on HTML Streaming, we will explore the practical implementation of the [**Diff DOM Streaming**](https://github.com/aralroca/diff-dom-streaming) library in web browsing. This approach will allow **any website** using **web components** to **retain its state during browsing**. We will discuss in detail how to achieve this step by step using **VanillaJS** and [**Bun**](https://bun.sh/).
-
-It is important to note that it is not necessary to have a complex server, as we can use static files. However, we will also explore how this technique works with HTML streaming and we will stream from Bun.

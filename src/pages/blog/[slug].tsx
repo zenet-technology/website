@@ -31,9 +31,6 @@ export default async function PostPage(
           date={date}
           timeToRead={timeToRead}
         />
-        <p class="font-light text-gray-500 text-base sm:text-lg dark:text-gray-400">
-          {metadata.description}
-        </p>
       </hgroup>
       {metadata.coverImage && (
         <div key={slug} class="cover-image">
@@ -54,6 +51,9 @@ export default async function PostPage(
           <tag-badge key={tag} label={tag} />
         ))}
       </div>
+      <p class="my-8 text-center font-light text-gray-500 text-base sm:text-lg dark:text-gray-400">
+        {metadata.description}
+      </p>
       <BlogSeries key="series-top" title={metadata.series} series={series} />
       <div class="my-8">{dangerHTML(await __html)}</div>
       <BlogSeries

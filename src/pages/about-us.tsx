@@ -116,7 +116,7 @@ export default function AboutUs() {
         success. We're here to empower your growth.
       </p>
 
-      <blockquote class="p-4 my-4 border-l-4 border-primary-500 bg-gray-50 dark:bg-gray-700">
+      <blockquote>
         Ready to Make Your Team/App Shine? Drop us a line! We'll help you grow
         your business.
       </blockquote>
