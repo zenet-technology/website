@@ -13,7 +13,7 @@ export default function Nav(
 
   return (
     <header class="fixed top-0 w-screen z-10 shadow bg-white dark:bg-black dark:border-b dark:border-gray-700">
-      <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+      <div class=" max-w-7xl flex flex-wrap items-center justify-between mx-auto p-4">
         <a href="/" class="flex items-center">
           <logo-full-light class="hidden dark:block h-8" />
           <logo-full-dark class="dark:hidden h-8" />
