@@ -47,6 +47,7 @@ export default function Layout(
           href="https://fonts.gstatic.com"
           crossOrigin=""
         />
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
         <title>{metadata.title}</title>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />

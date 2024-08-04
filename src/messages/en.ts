@@ -56,4 +56,10 @@ export default {
   BLOG_READ_ARTICLE: 'Read the article →',
   BLOG_SEE_MORE: 'More...',
   BLOG_SERIES: '{{title}} ({{length}} Part Series)',
+  COOKIES: {
+    DESCRIPTION: 'We use cookies to improve your experience and for marketing.',
+    PRIVACY: 'See our cookie policy.',
+    DENY: 'No thanks',
+    GRANT: "Yeah, I'm happy",
+  },
 } as const;

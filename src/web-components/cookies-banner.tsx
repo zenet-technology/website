@@ -3,25 +3,78 @@ import type { WebContext } from 'brisa';
 
 export default function CookiesBanner(
   _: undefined,
-  { state, onMount }: WebContext,
+  { i18n, state, onMount }: WebContext,
 ) {
+  const gaId = 'G-EEX9THLNQ9';
   const showBanner = state(false);
 
   onMount(() => {
-    showBanner.value = getCookie('cookies_enabled') === null;
+    const cookiesEnabled = getCookie('cookies_enabled');
+    showBanner.value = cookiesEnabled === null;
+
+    // Definitions
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function gtag() {
+      // biome-ignore lint/style/noArguments: This is by google documentation. I prefer to leave it as it is.
+      window.dataLayer?.push(arguments);
+    };
+    window.consentGranted = () => {
+      console.log('consent granted');
+      window.gtag('consent', 'update', {
+        ad_personalization: 'granted',
+        ad_storage: 'granted',
+        ad_user_data: 'granted',
+        analytics_storage: 'granted',
+        functionality_storage: 'granted',
+        personalization_storage: 'granted',
+        security_storage: 'granted',
+      });
+    };
+    window.consentDenied = () => {
+      console.log('consent denied');
+      deleteCookie('sb_uid');
+      deleteCookie('_ga');
+      deleteCookie('_gat');
+      deleteCookie('_gid');
+
+      window.gtag('consent', 'update', {
+        ad_personalization: 'denied',
+        ad_storage: 'denied',
+        ad_user_data: 'denied',
+        analytics_storage: 'denied',
+        functionality_storage: 'denied',
+        personalization_storage: 'denied',
+        security_storage: 'denied',
+      });
+    };
+
+    // Setting the configs
+    window.gtag('js', new Date());
+    window.gtag('config', gaId);
+    if (cookiesEnabled === 'true') {
+      window.consentGranted();
+    } else {
+      window.consentDenied();
+    }
+
+    // Loading GTAG Script
+    const gtagScript = document.createElement('script');
+    gtagScript.async = true;
+    gtagScript.src = `https://www.googletagmanager.com/gtag/js?id=${gaId}`;
+
+    const firstScript = document.getElementsByTagName('script')[0];
+    const headElement = document.getElementsByTagName('head')[0];
+    headElement.insertBefore(gtagScript, firstScript);
   });
 
   const onYes = () => {
+    window.consentGranted();
     setCookie('cookies_enabled', 'true');
     showBanner.value = false;
   };
 
   const onNo = () => {
-    deleteCookie('sb_uid');
-    deleteCookie('_ga');
-    deleteCookie('_gat');
-    deleteCookie('_gid');
-
+    window.consentDenied();
     setCookie('cookies_enabled', 'false');
     showBanner.value = false;
   };
@@ -49,12 +102,12 @@ export default function CookiesBanner(
           />
         </svg>
         <div class="flex flex-col px-4 pt-4">
-          <p>We use cookies to improve your experience and for marketing.</p>
+          <p>{i18n.t('COOKIES.DESCRIPTION')}</p>
           <a
             href="/apps/web/app/cookies"
             class="pb-4 text-primary-700 hover:text-primary-500 dark:text-primary-500 dark:hover:text-primary-300"
           >
-            See our cookie policy.
+            {i18n.t('COOKIES.PRIVACY')}
           </a>
         </div>
       </div>
@@ -64,14 +117,14 @@ export default function CookiesBanner(
           class="px-4 py-3 rounded-none text-gray-700 bg-gray-300 hover:bg-gray-400 duration-150"
           onClick={onNo}
         >
-          No thanks
+          {i18n.t('COOKIES.DENY')}
         </button>
         <button
           type="button"
           class="flex-1 px-4 py-3 rounded-none bg-primary-500 hover:bg-primary-300 dark:hover:bg-primary-700 text-gray-700 duration-150"
           onClick={onYes}
         >
-          Yeah, I&apos;m happy
+          {i18n.t('COOKIES.GRANT')}
         </button>
       </div>
     </div>
