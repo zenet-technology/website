@@ -19,7 +19,6 @@ export default function CookiesBanner(
       window.dataLayer?.push(arguments);
     };
     window.consentGranted = () => {
-      console.log('consent granted');
       window.gtag('consent', 'update', {
         ad_personalization: 'granted',
         ad_storage: 'granted',
@@ -31,7 +30,6 @@ export default function CookiesBanner(
       });
     };
     window.consentDenied = () => {
-      console.log('consent denied');
       deleteCookie('sb_uid');
       deleteCookie('_ga');
       deleteCookie('_gat');
