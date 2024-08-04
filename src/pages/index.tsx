@@ -85,6 +85,7 @@ export default function Home(_: undefined, { i18n }: RequestContext) {
           <div class="md:flex-1 flex justify-center">
             <div class="relative self-center rounded shadow overflow-hidden">
               <img
+                loading="lazy"
                 class="object-cover"
                 src="/images/landing-image.webp"
                 alt="Zenet Technology"
