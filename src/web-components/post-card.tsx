@@ -17,7 +17,7 @@ export default function PostCard(
 ) {
   return (
     <a
-      href={`/blog/${slug}`}
+      href={`${path}/${slug}`}
       key={key}
       title={metadata.description}
       aria-label={metadata.description}

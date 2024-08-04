@@ -47,7 +47,7 @@ export default async function PostPage(
       )}
       <div class="flex flex-wrap gap-2 mt-2">
         {tags.map((tag) => (
-          <tag-badge path="/blog" key={tag} label={tag} />
+          <tag-badge path={`/${i18n.locale}/blog`} key={tag} label={tag} />
         ))}
       </div>
       <p class="my-8 text-center font-light text-gray-500 text-base sm:text-lg dark:text-gray-400">
@@ -67,6 +67,7 @@ export default async function PostPage(
           {morePosts.map((morePost) => (
             <post-card
               key={morePost.slug}
+              path={`/${i18n.locale}/blog`}
               slug={morePost.slug}
               metadata={morePost.metadata}
               date={morePost.date}

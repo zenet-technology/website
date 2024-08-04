@@ -1,7 +1,10 @@
 import getAllPosts from '@/utils/getAllPosts';
 import type { RequestContext } from 'brisa';
 
-export default function Blog(_: undefined, { store, route }: RequestContext) {
+export default function Blog(
+  _: undefined,
+  { i18n, store, route }: RequestContext,
+) {
   const posts = getAllPosts();
   const tags = posts.reduce<string[]>((t, post) => {
     const postTags = post.metadata.tags?.split(',') ?? [];
@@ -21,7 +24,7 @@ export default function Blog(_: undefined, { store, route }: RequestContext) {
 
   return (
     <post-list
-      path={route.pathname.split('?')[0]}
+      path={`/${i18n.locale}${route.pathname.split('?')[0]}`}
       tags={tags}
       search={route.query.q}
       page={Number.isInteger(route.query.page) ? Number(route.query.page) : 1}
