@@ -69,7 +69,7 @@ export default function Home(_: undefined, { i18n }: RequestContext) {
                   {i18n.t('LANDING.TITLE')}
                 </span>
               </h1>
-              <p class="font-semibold mb-8 text-primary-700 dark:text-primary-500 text-l sm:text-xl lg:text-2xl">
+              <p class="font-semibold mb-8 text-primary-700 dark:text-primary text-l sm:text-xl lg:text-2xl">
                 {i18n.t('LANDING.SUBTITLE')}
               </p>
             </hgroup>
@@ -86,7 +86,7 @@ export default function Home(_: undefined, { i18n }: RequestContext) {
             <div class="relative self-center rounded shadow overflow-hidden">
               <img
                 class="object-cover"
-                src="/images/landing-image.jpg"
+                src="/images/landing-image.webp"
                 alt="Zenet Technology"
               />
             </div>

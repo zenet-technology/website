@@ -305,7 +305,7 @@
   }
 
   a {
-    @apply text-primary hover:text-secondary;
+    @apply text-primary-700 dark:text-primary-300 hover:text-secondary;
   }
 
   form {
@@ -317,7 +317,7 @@
   }
 
   button.primary {
-    @apply bg-primary text-white dark:text-black hover:bg-background-light hover:dark:bg-background-dark hover:text-primary active:text-primary active:bg-background-light/80 active:dark:bg-background-dark/90;
+    @apply bg-primary text-black hover:bg-primary/80 active:bg-primary/60;
   }
 
   input,
