@@ -28,10 +28,10 @@ jobs:
       - name: 📦 Setup Bun + install deps
         uses: ./.github/actions/setup-bun-install
 
-      # - name: Deploy
-      #   uses: cloudflare/wrangler-action@v3
-      #   with:
-      #     apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      #     preCommands: bun run build
-      #     command: pages deploy
-      #     packageManager: bun
+      - name: Deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          preCommands: bun run build
+          command: pages deploy
+          packageManager: bun
