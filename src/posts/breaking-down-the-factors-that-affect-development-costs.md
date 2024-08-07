@@ -47,7 +47,7 @@ The triple constraint in project management is the relationship between three es
 Project managers use the triple constraint to balance these factors and ensure they meet the project's goals. Based on those factors, they must make decisions and trade-offs to ensure the project is completed successfully, on time, and within budget.
 
 <figure class="flex flex-col my-4" style="align-items:center">
-  <img class="w-full rounded" style="max-width:400px" src="/images/breaking-down-the-factors-that-affect-development-costs/triple-constraint.webp" alt="Triple constraint" />
+  <img class="w-full rounded" style="max-width:400px" src="/blog/breaking-down-the-factors-that-affect-development-costs/triple-constraint.webp" alt="Triple constraint" />
   <figcaption><small>Triple constraint</small></figcaption>
 </figure>
 
@@ -66,7 +66,7 @@ Having precise project requirements is essential for managing development costs.
 ### Cost of a change vs. ability to make a change over time
 
 <figure class="flex flex-col my-4" style="align-items:center">
-  <img class="w-full rounded" style="max-width:400px" src="/images/breaking-down-the-factors-that-affect-development-costs/cost-vs-ability.webp" alt="Cost of a change vs. ability to make a change over time" />
+  <img class="w-full rounded" style="max-width:400px" src="/blog/breaking-down-the-factors-that-affect-development-costs/cost-vs-ability.webp" alt="Cost of a change vs. ability to make a change over time" />
   <figcaption><small>Cost of a change vs. ability to make a change over time</small></figcaption>
 </figure>
 
