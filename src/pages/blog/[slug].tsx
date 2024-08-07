@@ -50,6 +50,11 @@ export default async function PostPage(
           <tag-badge path={`/${i18n.locale}/blog`} key={tag} label={tag} />
         ))}
       </div>
+      {metadata.audio && (
+        <audio async class="my-4" controls>
+          <source src={metadata.audio} type="audio/mpeg" />
+        </audio>
+      )}
       <p class="my-8 text-center font-light text-gray-500 text-base sm:text-lg dark:text-gray-400">
         {metadata.description}
       </p>
