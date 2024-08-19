@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@tailwindcss/postcss": "4.0.0-alpha.18",
-    "brisa": "0.0.174",
+    "brisa": "0.0.177",
     "gray-matter": "4.0.3",
     "highlight.js": "11.10.0",
     "js-paging": "0.2.0",
