@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@tailwindcss/postcss": "4.0.0-alpha.18",
-    "brisa": "0.0.177",
+    "brisa": "0.0.182",
     "gray-matter": "4.0.3",
     "highlight.js": "11.10.0",
     "js-paging": "0.2.0",
@@ -31,9 +31,9 @@
   },
   "devDependencies": {
     "@biomejs/biome": "1.8.3",
-    "@cloudflare/workers-types": "4.20240815.0",
+    "@cloudflare/workers-types": "4.20240821.1",
     "@types/bun": "1.1.6",
     "typescript": "5.5.4",
-    "wrangler": "3.72.0"
+    "wrangler": "3.72.2"
   }
 }
