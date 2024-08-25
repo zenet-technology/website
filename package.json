@@ -18,7 +18,7 @@
     "symlink": "cd ../brisa/packages/brisa && bun run build && cp -R * ../../../zenet/node_modules/brisa/ && cd ../../../zenet && bun dev"
   },
   "dependencies": {
-    "@tailwindcss/postcss": "4.0.0-alpha.20",
+    "@tailwindcss/postcss": "4.0.0-alpha.18",
     "brisa": "0.0.183",
     "gray-matter": "4.0.3",
     "highlight.js": "11.10.0",
