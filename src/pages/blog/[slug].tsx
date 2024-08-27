@@ -1,7 +1,6 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import { type RequestContext, dangerHTML } from 'brisa';
-import type { MatchedRoute } from 'bun';
+import { type RequestContext, dangerHTML, navigate } from 'brisa';
 
 import BlogSeries from '@/components/blog-series';
 import clearPage from '@/utils/clearPage';
@@ -12,9 +11,13 @@ export default async function PostPage(
   _: undefined,
   { store, route, i18n }: RequestContext,
 ) {
-  const { slug } = route.params;
+  const slug = route.params?.slug;
   const { metadata, date, morePosts, series, __html, tags, timeToRead } =
     store.get('post') as Awaited<ReturnType<typeof loadPostData>>;
+
+  if (!slug || Array.isArray(slug)) {
+    navigate('/blog');
+  }
 
   return (
     <article class="container mx-auto max-w-5xl px-4 lg:px-6 pt-8 lg:pt-16">
@@ -85,10 +88,7 @@ export default async function PostPage(
   );
 }
 
-async function loadPostData(route: MatchedRoute) {
-  const {
-    params: { slug },
-  } = route;
+async function loadPostData(slug: string) {
   const post = readPost(slug);
   const [morePosts, series] = await getMorePosts(post, slug);
   const __html = post.__html;
@@ -100,7 +100,12 @@ async function loadPostData(route: MatchedRoute) {
 }
 
 export async function Head(_: undefined, { store, route }: RequestContext) {
-  const post = await loadPostData(route);
+  const slug = route.params?.slug;
+  if (!slug || Array.isArray(slug)) {
+    navigate('/blog');
+  }
+
+  const post = await loadPostData(slug);
   store.set('post', post);
 
   return null;

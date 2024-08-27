@@ -46,6 +46,17 @@ export default function CookiesBanner(
       });
     };
 
+    // Default consent - mandatory
+    window.gtag('consent', 'default', {
+      ad_personalization: 'denied',
+      ad_storage: 'denied',
+      ad_user_data: 'denied',
+      analytics_storage: 'denied',
+      functionality_storage: 'denied',
+      personalization_storage: 'denied',
+      security_storage: 'denied',
+    });
+
     // Setting the configs
     window.gtag('js', new Date());
     window.gtag('config', gaId);

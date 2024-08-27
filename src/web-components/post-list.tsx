@@ -36,8 +36,7 @@ export default function PostList(
   });
 
   const onInput = (e: JSX.TargetedInputEvent<HTMLInputElement>) => {
-    const input = e.currentTarget;
-    const q = input.value;
+    const q = e.currentTarget.value;
     currentSearch.value = q;
     history.replaceState(null, '', q ? `${path}?q=${q}` : path);
   };
