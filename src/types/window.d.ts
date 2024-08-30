@@ -179,6 +179,16 @@ declare global {
     ) => void;
     consentGranted: () => void;
     consentDenied: () => void;
+    navigation?: {
+      addEventListener: (
+        event: string,
+        cb: (e: { destination: { url: string } }) => void,
+      ) => void;
+      removeEventListener: (
+        event: string,
+        cb: (e: { destination: { url: string } }) => void,
+      ) => void;
+    };
   }
 }
 

@@ -26,16 +26,6 @@ export default function Blog(
     <post-list
       path={`/${i18n.locale}${route.pathname.split('?')[0]}`}
       tags={tags}
-      search={
-        route.query?.q && Array.isArray(route.query.q)
-          ? route.query.q[0]
-          : ((route.query?.q ?? '') as string)
-      }
-      page={
-        Number.isInteger(route.query?.page)
-          ? Number(route.query?.page ?? '1')
-          : 1
-      }
     />
   );
 }

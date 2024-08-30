@@ -6,17 +6,15 @@ import pageBadges from 'js-paging';
 interface Props {
   path: string;
   tags: string[];
-  search?: string;
-  page?: number;
 }
 
 export default function PostList(
-  { path, tags, page = 1, search = '' }: Props,
-  { i18n, store, derived }: WebContext,
+  { path, tags }: Props,
+  { i18n, effect, cleanup, store, state, derived }: WebContext,
 ) {
   const itemsPerPage = 5;
-  const currentPage = derived(() => page);
-  const currentSearch = derived(() => search);
+  const currentPage = state(1);
+  const currentSearch = state('');
   const filteredPosts = derived(
     () =>
       (currentSearch.value
@@ -33,6 +31,25 @@ export default function PostList(
     const lastIndex = itemsPerPage * currentPage.value;
     const firstIndex = lastIndex - itemsPerPage;
     return filteredPosts.value.slice(firstIndex, lastIndex) ?? [];
+  });
+
+  effect(() => {
+    const params = Object.fromEntries(
+      new URLSearchParams(window.location.search).entries(),
+    );
+    currentSearch.value = params.q ?? '';
+    currentPage.value = Number(params.page ?? '1');
+
+    const navigate = (e: { destination: { url: string } }) => {
+      const params = Object.fromEntries(
+        new URL(e.destination.url).searchParams.entries(),
+      );
+      currentSearch.value = params.q ?? '';
+      currentPage.value = Number(params.page ?? '1');
+    };
+
+    window.navigation?.addEventListener('navigate', navigate);
+    cleanup(() => window.navigation?.removeEventListener('navigate', navigate));
   });
 
   const onInput = (e: JSX.TargetedInputEvent<HTMLInputElement>) => {
