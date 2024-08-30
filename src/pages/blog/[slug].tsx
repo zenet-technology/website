@@ -119,13 +119,13 @@ export async function Head(_: undefined, { store, route }: RequestContext) {
       <meta name="title" content={post.metadata.title} />
       <meta
         name="description"
-        content={post.metadata.description?.replace('"', "'")}
+        content={post.metadata.description?.replaceAll('"', "'")}
       />
       <meta name="keywords" content={post.metadata.tags} />
       <meta name="twitter:title" content={post.metadata.title} />
       <meta
         name="twitter:description"
-        content={post.metadata.description?.replace('"', "'")}
+        content={post.metadata.description?.replaceAll('"', "'")}
       />
       <meta
         name="twitter:image"
@@ -137,7 +137,7 @@ export async function Head(_: undefined, { store, route }: RequestContext) {
       <meta property="og:title" content={post.metadata.title} />
       <meta
         property="og:description"
-        content={post.metadata.description?.replace('"', "'")}
+        content={post.metadata.description?.replaceAll('"', "'")}
       />
       <meta property="og:url" content={getCanonical(route.pathname)} />
       <meta
