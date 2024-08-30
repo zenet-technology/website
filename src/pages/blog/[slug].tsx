@@ -6,6 +6,7 @@ import BlogSeries from '@/components/blog-series';
 import clearPage from '@/utils/clearPage';
 import getMorePosts from '@/utils/getMorePosts';
 import readPost from '@/utils/readPost';
+import getCanonical from '@/utils/getCanonical';
 
 export default async function PostPage(
   _: undefined,
@@ -108,7 +109,35 @@ export async function Head(_: undefined, { store, route }: RequestContext) {
   const post = await loadPostData(slug);
   store.set('post', post);
 
-  return null;
+  return (
+    <>
+      <link
+        rel="canonical"
+        href={post.metadata.canonical ?? getCanonical(route.pathname)}
+      />
+      <title>{post.metadata.title}</title>
+      <meta name="title" content={post.metadata.title} />
+      <meta name="description" content={post.metadata.description} />
+      <meta name="keywords" content={post.metadata.tags} />
+      <meta name="twitter:title" content={post.metadata.title} />
+      <meta name="twitter:description" content={post.metadata.description} />
+      <meta
+        name="twitter:image"
+        content={getCanonical(post.metadata.coverImage)}
+      />
+      <meta name="twitter:image:alt" content={post.metadata.title} />
+
+      <meta property="og:type" content="article" />
+      <meta property="og:title" content={post.metadata.title} />
+      <meta property="og:description" content={post.metadata.description} />
+      <meta property="og:url" content={getCanonical(route.pathname)} />
+      <meta
+        property="og:image"
+        content={getCanonical(post.metadata.coverImage)}
+      />
+      <meta property="og:image:alt" content={post.metadata.title} />
+    </>
+  );
 }
 
 export const prerender = async () => {

@@ -16,6 +16,7 @@ export type Metadata = {
   author?: string;
   authorLink?: string;
   audio?: string;
+  canonical?: string;
 };
 
 export type Post = {
