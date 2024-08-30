@@ -4,9 +4,9 @@ import { type RequestContext, dangerHTML, navigate } from 'brisa';
 
 import BlogSeries from '@/components/blog-series';
 import clearPage from '@/utils/clearPage';
+import getCanonical from '@/utils/getCanonical';
 import getMorePosts from '@/utils/getMorePosts';
 import readPost from '@/utils/readPost';
-import getCanonical from '@/utils/getCanonical';
 
 export default async function PostPage(
   _: undefined,
