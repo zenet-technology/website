@@ -12,11 +12,11 @@ interface Props {
 
 export default function PostList(
   { path, tags, page = 1, search = '' }: Props,
-  { i18n, state, store, derived }: WebContext,
+  { i18n, store, derived }: WebContext,
 ) {
   const itemsPerPage = 5;
-  const currentPage = state(page);
-  const currentSearch = state(search);
+  const currentPage = derived(() => page);
+  const currentSearch = derived(() => search);
   const filteredPosts = derived(
     () =>
       (currentSearch.value
@@ -107,7 +107,7 @@ export default function PostList(
         <aside class="md:sticky w-full md:max-w-[320px]">
           <input
             class="w-full mb-4"
-            value={search}
+            value={currentSearch.value}
             onInput={onInput}
             aria-label={i18n.t('BLOG_POST_SEARCH')}
             placeholder={i18n.t('BLOG_POST_SEARCH')}
