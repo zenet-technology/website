@@ -117,10 +117,16 @@ export async function Head(_: undefined, { store, route }: RequestContext) {
       />
       <title>{post.metadata.title}</title>
       <meta name="title" content={post.metadata.title} />
-      <meta name="description" content={post.metadata.description} />
+      <meta
+        name="description"
+        content={post.metadata.description?.replace('"', "'")}
+      />
       <meta name="keywords" content={post.metadata.tags} />
       <meta name="twitter:title" content={post.metadata.title} />
-      <meta name="twitter:description" content={post.metadata.description} />
+      <meta
+        name="twitter:description"
+        content={post.metadata.description?.replace('"', "'")}
+      />
       <meta
         name="twitter:image"
         content={getCanonical(post.metadata.coverImage)}
@@ -129,7 +135,10 @@ export async function Head(_: undefined, { store, route }: RequestContext) {
 
       <meta property="og:type" content="article" />
       <meta property="og:title" content={post.metadata.title} />
-      <meta property="og:description" content={post.metadata.description} />
+      <meta
+        property="og:description"
+        content={post.metadata.description?.replace('"', "'")}
+      />
       <meta property="og:url" content={getCanonical(route.pathname)} />
       <meta
         property="og:image"
