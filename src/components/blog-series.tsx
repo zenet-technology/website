@@ -29,7 +29,7 @@ export default function BlogSeries(
           const title = `${index + 1}) ${serie.title}`;
           const key = `serie-${serie.slug}`;
 
-          if (serie.slug === query.slug) {
+          if (serie.slug === query?.slug) {
             return (
               <div
                 key={key}

@@ -6,18 +6,26 @@
   --default-transition-duration: 150ms;
   --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   /* --default-font-family: var(--font-family-sans); */
-  --default-font-feature-settings: var(--font-family-sans--font-feature-settings);
-  --default-font-variation-settings: var(--font-family-sans--font-variation-settings);
+  --default-font-feature-settings: var(
+    --font-family-sans--font-feature-settings
+  );
+  --default-font-variation-settings: var(
+    --font-family-sans--font-variation-settings
+  );
   --default-mono-font-family: var(--font-family-mono);
-  --default-mono-font-feature-settings: var(--font-family-mono--font-feature-settings);
-  --default-mono-font-variation-settings: var(--font-family-mono--font-variation-settings);
+  --default-mono-font-feature-settings: var(
+    --font-family-mono--font-feature-settings
+  );
+  --default-mono-font-variation-settings: var(
+    --font-family-mono--font-variation-settings
+  );
 
   /* Fonts */
   --default-font-family: Poppins;
   --font-family-sans: Poppins, sans-serif;
   --font-family-headings: Montserrat, Poppins, sans-serif;
-  --font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
-    'Courier New', monospace;
+  --font-family-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
 
   /* Breakpoints */
   --breakpoint-sm: 40rem;
@@ -27,26 +35,26 @@
   --breakpoint-2xl: 96rem;
 
   /* Colors */
-  --color-black: #0B2027;
-  --color-white: #FEFEFE;
-  --color-primary: #FFAA00;
-  --color-primary-300: #FFC981;
-  --color-primary-500: #FFAA00;
-  --color-primary-700: #855A16;
-  --color-secondary: #00C5A7;
-  --color-secondary-300: #86DDC8;
-  --color-secondary-500: #00C5A7;
-  --color-secondary-700: #006b5A;
-  --color-tertiary: #2470E7;
-  --color-tertiary-300: #A3B1F6;
-  --color-tertiary-500: #2470E7;
-  --color-tertiary-700: #2E4685;
-  --color-gray: #6B767B;
-  --color-gray-300: #B2B8BA;
-  --color-gray-400: #8D969A;
-  --color-gray-500: #6B767B;
-  --color-gray-600: #49585D;
-  --color-gray-700: #2A3B41;
+  --color-black: #0b2027;
+  --color-white: #fefefe;
+  --color-primary: #ffaa00;
+  --color-primary-300: #ffc981;
+  --color-primary-500: #ffaa00;
+  --color-primary-700: #855a16;
+  --color-secondary: #00c5a7;
+  --color-secondary-300: #86ddc8;
+  --color-secondary-500: #00c5a7;
+  --color-secondary-700: #006b5a;
+  --color-tertiary: #2470e7;
+  --color-tertiary-300: #a3b1f6;
+  --color-tertiary-500: #2470e7;
+  --color-tertiary-700: #2e4685;
+  --color-gray: #6b767b;
+  --color-gray-300: #b2b8ba;
+  --color-gray-400: #8d969a;
+  --color-gray-500: #6b767b;
+  --color-gray-600: #49585d;
+  --color-gray-700: #2a3b41;
   --color-alert-success-light: rgb(187, 247, 208);
   --color-alert-success-dark: rgb(22, 101, 52);
   --color-alert-warning-light: rgb(254, 215, 170);
@@ -90,8 +98,10 @@
   --shadow-xs: 0 1px rgb(0 0 0 / 0.05);
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px
+    rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px
+    rgb(0 0 0 / 0.1);
   --shadow-2xl: 0 25px 50px -12px rgb(0 0 0 / 0.25);
   --shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
 
@@ -334,7 +344,7 @@
     @apply cursor-pointer;
   }
 
-  input[type='checkbox'] {
+  input[type="checkbox"] {
     @apply p-0 h-4 w-4 appearance-none checked:[appearance:textfield] cursor-pointer accent-primary;
   }
 
@@ -346,7 +356,8 @@
     @apply cursor-pointer;
   }
 
-  ul, ol {
+  ul,
+  ol {
     @apply mb-4 space-y-1 text-gray-700 list-inside dark:text-gray-300;
   }
 
@@ -365,22 +376,22 @@
   code {
     @apply bg-gray-700 text-white px-2 rounded;
   }
-  
+
   pre code {
     @apply block overflow-x-auto leading-6 shadow p-4;
   }
-  
+
   .hljs-title,
   .hljs-name {
     color: #f0c674;
   }
-  
+
   .hljs-comment,
   .hljs-meta,
   .hljs-meta .hljs-keyword {
     @apply text-gray;
   }
-  
+
   .hljs-number,
   .hljs-symbol,
   .hljs-literal,
@@ -388,7 +399,7 @@
   .hljs-link {
     color: #cc6666;
   }
-  
+
   .hljs-string,
   .hljs-doctag,
   .hljs-addition,
@@ -397,27 +408,27 @@
   .hljs-selector-pseudo {
     color: #b5bd68;
   }
-  
+
   .hljs-attribute,
   .hljs-code,
   .hljs-selector-id {
     color: #b294bb;
   }
-  
+
   .hljs-keyword,
   .hljs-selector-tag,
   .hljs-bullet,
   .hljs-tag {
     color: #81a2be;
   }
-  
+
   .hljs-subst,
   .hljs-variable,
   .hljs-template-tag,
   .hljs-template-variable {
     color: #8abeb7;
   }
-  
+
   .hljs-type,
   .hljs-built_in,
   .hljs-builtin-name,
@@ -426,11 +437,11 @@
   .hljs-selector-class {
     color: #de935f;
   }
-  
+
   .hljs-emphasis {
     @apply italic;
   }
-  
+
   .hljs-strong {
     @apply font-bold;
   }
