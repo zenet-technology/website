@@ -5,8 +5,8 @@
       "name": "@zenet-technology/website",
       "dependencies": {
         "@tailwindcss/postcss": "4.0.17",
-        "brisa": "0.2.10-canary.9",
-        "brisa-tailwindcss": "0.2.10-canary.9",
+        "brisa": "0.2.9",
+        "brisa-tailwindcss": "0.2.9",
         "gray-matter": "4.0.3",
         "highlight.js": "11.11.1",
         "js-paging": "0.2.0",
@@ -208,9 +208,9 @@
 
     "blake3-wasm": ["blake3-wasm@2.1.5", "", {}, "sha512-F1+K8EbfOZE49dtoPtmxUQrpXaBIl3ICvasLh+nJta0xkz+9kF/7uet9fLnwKqhDrmj6g+6K3Tw9yQPUg2ka5g=="],
 
-    "brisa": ["brisa@0.2.10-canary.9", "", { "dependencies": { "astring": "1.9.0", "csstype": "3.1.3", "diff-dom-streaming": "0.6.5", "meriyah": "6.0.5" }, "bin": { "brisa": "index.js" } }, "sha512-P8JVomGUEmwvOCU7hcWuVk1dDCtjfHEoCT9cx3JjMAE0E85wfApnv6nnNEyFaEjAxXZU8UG86x18/OB2t4adUw=="],
+    "brisa": ["brisa@0.2.9", "", { "dependencies": { "astring": "1.9.0", "csstype": "3.1.3", "diff-dom-streaming": "0.6.5", "meriyah": "6.0.5" }, "bin": { "brisa": "index.js" } }, "sha512-QTH+1I8TW5OWVw72bkRusiO2YYoTVETivJrxj6nh6/pfW7Inp6BGLb/9AZeufQRck1YmAIb8GA65Wc4XDlZEng=="],
 
-    "brisa-tailwindcss": ["brisa-tailwindcss@0.2.10-canary.9", "", { "peerDependencies": { "@tailwindcss/postcss": "^4.0.0", "postcss": "^8.4.48", "tailwindcss": "^4.0.1" } }, "sha512-qmSmNSnjRuaU3tu7CguPrz759shLIipPTYoaEeDqOtIk9MdX5CYQSSb3LnR2vkzVUMJe9R747ZAT1lnnpUd7Ow=="],
+    "brisa-tailwindcss": ["brisa-tailwindcss@0.2.9", "", { "peerDependencies": { "@tailwindcss/postcss": "^4.0.0", "postcss": "^8.4.48", "tailwindcss": "^4.0.1" } }, "sha512-Z+qYjLd9Lewqxnj+pKPNFR+4gdNSPBCpU7xwKUCETPOf5d0RIonOeZdVyXrJgPASD1Xyl3i3We4fu0tERgiSVg=="],
 
     "bun-types": ["bun-types@1.2.7", "", { "dependencies": { "@types/node": "*", "@types/ws": "*" } }, "sha512-P4hHhk7kjF99acXqKvltyuMQ2kf/rzIw3ylEDpCxDS9Xa0X0Yp/gJu/vDCucmWpiur5qJ0lwB2bWzOXa2GlHqA=="],
 
