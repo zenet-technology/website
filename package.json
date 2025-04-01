@@ -18,22 +18,23 @@
     "symlink": "cd ../brisa/packages/brisa && bun run build && cp -R * ../../../zenet/node_modules/brisa/ && cd ../../../zenet && bun dev"
   },
   "dependencies": {
-    "@tailwindcss/postcss": "4.0.0-alpha.26",
-    "brisa": "0.1.1",
+    "@tailwindcss/postcss": "4.0.17",
+    "brisa": "0.2.10-canary.9",
+    "brisa-tailwindcss": "0.2.10-canary.9",
     "gray-matter": "4.0.3",
-    "highlight.js": "11.10.0",
+    "highlight.js": "11.11.1",
     "js-paging": "0.2.0",
-    "marked": "14.1.2",
-    "marked-highlight": "2.1.4",
-    "postcss": "8.4.47",
+    "marked": "15.0.7",
+    "marked-highlight": "2.2.1",
+    "postcss": "8.5.3",
     "reading-time": "1.5.0",
-    "tailwindcss": "4.0.0-alpha.26"
+    "tailwindcss": "4.0.17"
   },
   "devDependencies": {
-    "@biomejs/biome": "1.9.3",
-    "@cloudflare/workers-types": "4.20241004.0",
-    "@types/bun": "1.1.11",
-    "typescript": "5.6.3",
-    "wrangler": "3.80.2"
+    "@biomejs/biome": "1.9.4",
+    "@cloudflare/workers-types": "4.20250327.0",
+    "@types/bun": "1.2.8",
+    "typescript": "5.8.2",
+    "wrangler": "4.6.0"
   }
 }

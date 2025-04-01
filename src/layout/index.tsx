@@ -3,11 +3,11 @@ import Footer from '@/components/footer';
 import Nav from '@/components/nav';
 import getCanonical from '@/utils/getCanonical';
 import type { RequestContext } from 'brisa';
-import appStyle from '../style.css';
+import '../style.css';
 
 export default function Layout(
   { children }: { children: JSX.Element },
-  { route, i18n, css: setCSS }: RequestContext,
+  { route, i18n }: RequestContext,
 ) {
   const { name, query, pathname } = route;
   const isDefaultMeta = name !== '/blog/[slug]';
@@ -36,20 +36,9 @@ export default function Layout(
     ],
   } as const;
 
-  setCSS`
-    ${appStyle}
-  `;
-
   return (
     <html lang={i18n.locale}>
       <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin=""
-        />
-        <link rel="preconnect" href="https://www.googletagmanager.com" />
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="author" href={metadata.baseUrl} />
@@ -57,10 +46,6 @@ export default function Layout(
         <link rel="manifest" href="/site.webmanifest" />
         <meta name="theme-color" content="#0b2027" />
         <link rel="icon" href="/favicon.ico" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,300;0,400;0,600;1,400&display=swap"
-          rel="stylesheet"
-        />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:creator" content="@zenettechnology" />
         <link
@@ -93,7 +78,7 @@ export default function Layout(
             <meta property="og:image:alt" content={metadata.title} />
           </>
         )}
-        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="mobile-web-app-capable" content="yes" />
         <meta name="apple-mobile-web-app-title" content="Zenet Technology" />
         <link
           href="/splash/splash-1290.png"
