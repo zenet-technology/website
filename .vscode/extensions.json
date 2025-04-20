@@ -1,10 +1,7 @@
 {
   "recommendations": [
     "bradlc.vscode-tailwindcss",
-    "steoates.autoimport",
     "yzhang.markdown-all-in-one",
-    "christian-kohler.npm-intellisense",
-    "christian-kohler.path-intellisense",
     "redhat.vscode-yaml",
     "biomejs.biome",
     "github.vscode-github-actions"
